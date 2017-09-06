@@ -23,12 +23,21 @@
 
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">PROFILE</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+          </li>
+          {% else %}
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+            </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'register' %}">REGISTER</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
