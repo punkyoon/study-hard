@@ -4,21 +4,21 @@
 {% endblock %}
 
 {% block operation %}
-<form class="" method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>
-    <div class="">
-      <label for="username">Username</label>
+    <div class="form-group">
+      <label class="form-control-label" for="username">Username</label>
       <input id="username" name="username" type="text" placeholder="Username" autofocus required/>
     </div>
 
-    <div class="">
-      <label for="password">Password</label>
+    <div class="form-group">
+      <label class="form-control-label" for="password">Password</label>
       <input id="password" name="password" type="password" placeholder="Password" required/>
     </div>
 
-    <div class="">
-      <button type="submit" class="">Login</button>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Login</button>
     </div>
   </fieldset>
 </form>

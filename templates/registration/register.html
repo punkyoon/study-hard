@@ -4,31 +4,31 @@
 {% endblock %}
 
 {% block operation %}
-<form class="pure-form pure-form-aligned form" method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>
-    <div class="">
-      <label for="username">Username</label>
+    <div class="form-group">
+      <label class="form-control-label" for="username">Username</label>
       <input id="username" name="username" type="text" placeholder="Username" autofocus required/>
     </div>
     
-    <div class="">
-      <label for="e-mail">E-mail</label>
+    <div class="form-group">
+      <label class="form-control-label" for="e-mail">E-mail</label>
       <input id="e-mail" name="e-mail" type="email" placeholder="E-mail" required/>
     </div>
   
-    <div class="">
-      <label for="password">Password</label>
+    <div class="form-group">
+      <label class="form-control-label" for="password">Password</label>
       <input id="password" name="password1" type="password" placeholder="Password" required/>
     </div>
   
-    <div class="">
-      <label for="password-confirm">Password Confirm</label>
+    <div class="form-group">
+      <label class="form-control-label" for="password-confirm">Password Confirm</label>
       <input id="password-confirm" name="password2" type="password" placeholder="Password Confirm" required/>
     </div>
 
-    <div class="">
-      <label for="gender">Gender</label>
+    <div class="form-group">
+      <label class="form-control-label" for="gender">Gender</label>
       <select>
         <option name="Female">Female</option>
         <option name="Male">Male</option>
@@ -36,21 +36,21 @@
       </select>
     </div>
 
-    <div class="">
-      <label for="phone">Phone Number</label>
+    <div class="form-group">
+      <label class="form-control-label" for="phone">Phone Number</label>
       <input id="phone" name="phone" type="text" placeholder="Phone Number"/>
     </div>
 
-    <div class="">
-      <label for="institution">Institution</label>
+    <div class="form-group">
+      <label class="form-control-label" for="institution">Institution</label>
       <input id="institution" name="institution" type="text" placeholder="Institution"/>
     </div>
       
-    <div class="">
-      <label for="checkbox" class="">
-        <input id="checkbox" type="checkbox" required> I've read the terms and conditions.
+    <div class="form-check">
+      <label for="checkbox" class="form-check-label">
+        <input id="checkbox" class="form-check-input" type="checkbox" required> I've read the terms and conditions.
       </label>
-      <button type="submit" class="">Register</button>
+      <button type="submit" class="btn btn-primary">Register</button>
     </div>
   </fieldset>
 </form>
