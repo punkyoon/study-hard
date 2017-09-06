@@ -104,3 +104,5 @@ ENV/
 # Redis db
 *.rdb
 *.swp
+
+.vscode/

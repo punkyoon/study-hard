@@ -18,16 +18,16 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md fixed-top">
+    <nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
       <a class="navbar-brand" href="/">Study Hard</a>
 
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">LOGIN</a>
+            <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REGISTER</a>
+            <a class="nav-link" href="{% url 'register' %}">REGISTER</a>
           </li>
         </ul>
       </div>
