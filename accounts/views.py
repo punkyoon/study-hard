@@ -26,8 +26,8 @@ def register_view(request):
 
             login(request, user)
             return redirect('/accounts/profile')
+        error = 'Wrong ID or Password mismatch'
     
-    error = 'Wrong ID or Password mismatch'
     return render(request, 'registration/register.html', {'error': error})
 
 
