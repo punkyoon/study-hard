@@ -9,6 +9,9 @@ class Notice(models.Model):
     upload_time = models.DateTimeField(auto_now_add=True)
     contents = models.TextField()
 
+    def __str__(self):
+        return str(self.study.name)
+
 
 class Attendance(models.Model):
     _id = models.AutoField(primary_key=True)
@@ -16,3 +19,6 @@ class Attendance(models.Model):
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, default='absence')
+
+    def __str__(self):
+        return str(self.user.username)
