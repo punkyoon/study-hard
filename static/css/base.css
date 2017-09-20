@@ -1,7 +1,37 @@
+/*!
+ * Start Bootstrap - One Page Wonder (http://startbootstrap.com/template-overviews/one-page-wonder)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/master/LICENSE)
+ */
+
 body {
-  padding-top: 5rem;
+  padding-top: 54px;
 }
-.container {
-  padding: 3rem 1.5rem;
+
+@media (min-width: 992px) {
+  body {
+      padding-top: 56px;
+  }
+}
+
+header.masthead > .overlay {
+  padding: 5rem 0;
   text-align: center;
+  color: rgb(255, 123, 0);
+}
+
+@media (min-width: 992px) {
+  header.masthead > .overlay {
+      padding: 10rem 0;
+  }
+}
+
+.navbar-brand {
+  color: rgb(255, 123, 0);
+  font-weight: bold;
+}
+
+.nav-link {
+  color: rgb(255, 123, 0);
+  font-weight: bold;
 }

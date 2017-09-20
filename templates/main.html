@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+{% load static %}
+<style>
+  body {
+    background: url({% static 'image/main_background.jpg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+</style>
+
+<header class="masthead">
+  <div class="overlay">
+    <div class="container">
+      <h1 class="display-1">Study Hard</h1>
+      <h4 class="display-4">your study supporter</h4>
+    </div>
+  </div>
+</header>
+{% endblock %}
