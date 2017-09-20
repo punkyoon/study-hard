@@ -1,0 +1,31 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+<h1>Create New Study</h1>
+
+<!-- creating new study form -->
+<fieldset>
+  <form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="study-title">Study title</label>
+      <input id="study-title" name="study-title" type="text" placeholder="Study title" />
+    </div>
+
+    <div class="form-group">
+      <label for="study-deposit">Study deposit</label>
+      <input id="study-deposit" name="study-deposit" type="text" placeholder="Study diposit" />
+    </div>
+
+    <div class="form-group">
+      <label for="study-description">Study description</label>
+      <textarea id="study-description" name="study-description" type="text" placeholder="Study description"></textarea>
+    </div>
+    
+    <div>
+      <button type="submit" class="btn btn-primary">Create new study</button>
+    </div>
+  </form>
+</fieldset>
+
+{% endblock %}

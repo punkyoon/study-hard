@@ -1,0 +1,18 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+<h1>{{ study.title }} Admin Page - Study Request List</h1>
+
+{% for study_request in study_requests %}
+  <div class="card card-outline-secondary mb-3">
+    <div class="card-block">
+      <!--<h3 class="card-title">{{ study.name }}</h3>-->
+      <p class="card-text">Name: {{ study_request.user.username }}</p>
+      <p class="card-text">Gender: {{ study_request.user.gender }}</p>
+      <p class="card-text">Institution: {{ study_request.user.institution }}</p>
+      <a href="#" class="btn btn-primary">Request Approve</a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

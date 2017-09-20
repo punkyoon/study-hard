@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 
 class Study(models.Model):
     _id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30)
+    title = models.CharField(max_length=30)
     deposit = models.IntegerField(default=0)
     url = models.URLField(unique=True)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField()
 
     def __str__(self):
         return str(self.name)
