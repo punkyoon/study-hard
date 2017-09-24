@@ -17,11 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from study_hard.views import main_view
-from service_main import views
+
 
 urlpatterns = [
     url(r'^$', main_view, name='main'),
-    url(r'^service/$', views.list_study, name='service_main'),
+    url(r'^service_main/', include('service_main.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
 ]

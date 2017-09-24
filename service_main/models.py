@@ -1,17 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
+from pokinator import Pokinator
+
+
+def _generate_url():
+    return Pokinator.generate()
 
 
 class Study(models.Model):
     _id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=30)
     deposit = models.IntegerField(default=0)
-    url = models.URLField(unique=True)
+    url = models.SlugField(unique=True, default=_generate_url)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
 
     def __str__(self):
-        return str(self.name)
+        return str(self.title)
 
 
 class StudyUser(models.Model):

@@ -5,7 +5,7 @@
 <h1>Study List</h1>
 
 <!-- create new study -->
-<a href="#" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Study</a>
+<a href="{% url 'create_study' %}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Study</a>
 
 <!-- search study -->
 <fieldset>
@@ -14,9 +14,6 @@
     <div class="form-group">
       <!--<label for="password-confirm">Search Study</label>-->
       <input id="search-study" name="search-study" type="text" placeholder="Search Study" />
-    </div>
-  
-    <div>
       <button type="submit" class="btn btn-primary">
           <i class="fa fa-search" aria-hidden="true"></i> Search
       </button>
@@ -26,12 +23,21 @@
 
 <!-- study list -->
 {% for study in study_list %}
-  <div class="card card-inverse" style="background-color: #333; border-color: #333;">
-    <div class="card-block">
-      <h3 class="card-title">{{ study.name }}</h3>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ study.title }}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ study.deposit }}</h6>
       <p class="card-text">{{ study.description }}</p>
-      <p class="card-text">Deposit: {{ study.depoit }}</p>
-      <a href="#" class="btn btn-primary">Join Request</a>
+      <a href="#" class="card-link">Join Request</a>
+    </div>
+  </div>
+  <br />
+{% empty %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Sorry</h3>
+      <p class="card-text">Cannot found available study list..</p>
+      <a href="#" class="card-link">Back to Main</a>
     </div>
   </div>
 {% endfor %}
