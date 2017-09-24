@@ -25,6 +25,15 @@ def create_study(request):
 
 
 @login_required
+def my_study(request):
+    study_list = {
+        'study_list': Study.objects.filter(admin=request.user)
+    }
+
+    return render(request, 'service/my_study.html', study_list)
+
+
+@login_required
 def list_study(request):
     if request.method == 'POST':
         # Search result

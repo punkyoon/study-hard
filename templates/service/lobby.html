@@ -3,23 +3,30 @@
 {% block contents %}
 <!-- service title -->
 <h1>Study List</h1>
+<hr />
 
-<!-- create new study -->
-<a href="{% url 'create_study' %}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Study</a>
+<div class="container row">
+  <div style="padding-right: 3%;">
+    <!-- create new study -->
+    <a href="{% url 'create_study' %}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Study</a>
+  </div>
 
-<!-- search study -->
-<fieldset>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-group">
-      <!--<label for="password-confirm">Search Study</label>-->
-      <input id="search-study" name="search-study" type="text" placeholder="Search Study" />
-      <button type="submit" class="btn btn-primary">
-          <i class="fa fa-search" aria-hidden="true"></i> Search
-      </button>
-    </div>
-  </form>
-</fieldset>
+  <!-- search study -->
+  <fieldset>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group input-group">
+        <!--<label for="password-confirm">Search Study</label>-->
+        <input class="form-control" id="search-study" name="search-study" type="text" placeholder="Search Study" />
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-secondary">
+              <i class="fa fa-search" aria-hidden="true"></i> Search
+          </button>
+        </span>
+      </div>
+    </form>
+  </fieldset>
+</div>
 
 <!-- study list -->
 {% for study in study_list %}
@@ -37,7 +44,7 @@
     <div class="card-body">
       <h3 class="card-title">Sorry</h3>
       <p class="card-text">Cannot found available study list..</p>
-      <a href="#" class="card-link">Back to Main</a>
+      <a href="{% url 'study_list' %}" class="card-link">Back to Main</a>
     </div>
   </div>
 {% endfor %}
