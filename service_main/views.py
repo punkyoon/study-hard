@@ -1,14 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from service_main.models import Study
+from service_main.models import Study, StudyRequest
+from study_hard.tool import _get_study, _check_request_avaliable
 
 
 @login_required
-def join_request_study(request):
-    if request.method == 'POST':
-        return render(request, 'service/request_list.html')
-    return render(request, 'service/join_request_form.html')
+def join_request_study(request, url):
+    study = _get_study(url)
+    if study is None or not _check_request_avaliable(study, request.user):
+        return redirect('study_list')
+    
+    StudyRequest.objects.create(study=study, user=request.user)
+    return redirect('my_study')
 
 
 @login_required
@@ -27,7 +31,8 @@ def create_study(request):
 @login_required
 def my_study(request):
     study_list = {
-        'study_list': Study.objects.filter(admin=request.user)
+        'manage_study_list': Study.objects.filter(admin=request.user),
+        'belong_study_list': StudyRequest.objects.filter(user=request.user),
     }
 
     return render(request, 'service/my_study.html', study_list)
@@ -45,7 +50,7 @@ def list_study(request):
         }
     else:
         study_list = {
-            'study_list': Study.objects.all()
+            'study_list': Study.objects.filter(is_available=True)
         }
 
     return render(request, 'service/lobby.html', study_list)

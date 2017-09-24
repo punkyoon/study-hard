@@ -5,14 +5,16 @@
 <h1>My Study: {{ request.user.username }}</h1>
 <hr />
 
-<!-- study list -->
-{% for study in study_list %}
+<!-- study list user manage -->
+<h3>Study list you manage</h3>
+<hr />
+{% for manage in manage_study_list %}
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">{{ study.title }}</h4>
-    <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ study.deposit }}</h6>
-    <p class="card-text">{{ study.description }}</p>
-    <a href="#" class="card-link">Go to manage page</a>
+    <h4 class="card-title">{{ manage.title }}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ manage.deposit }}</h6>
+    <p class="card-text">{{ manage.description }}</p>
+    <a href="/{{ manage.url }}" class="card-link">Go to manage page</a>
   </div>
 </div>
 <br />
@@ -21,7 +23,30 @@
   <div class="card-body">
     <h3 class="card-title">Sorry</h3>
     <p class="card-text">There's no study you manage..</p>
-    <a href="{% url 'study_lisy' %}" class="card-link">Back to Main</a>
+  </div>
+</div>
+{% endfor %}
+
+<br />
+
+<!-- study list user belong to -->
+<h3>Study list you belong to</h3>
+<hr />
+{% for belong in belong_study_list %}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ belong.study.title }}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ belong.study.deposit }}</h6>
+    <p class="card-text">{{ belong.study.description }}</p>
+    <a href="/{{ belong.study.url }}" class="card-link">Go to manage page</a>
+  </div>
+</div>
+<br />
+{% empty %}
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Sorry</h3>
+    <p class="card-text">There's no study you belong to..</p>
   </div>
 </div>
 {% endfor %}

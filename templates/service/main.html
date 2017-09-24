@@ -1,0 +1,18 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+{% if study_info is None %}
+<h1>Invalid Study</h1>
+<hr />
+
+<a href="{% url 'main' %}"><h3>Back to Main</h3></a>
+
+{% else %}
+<h1>Study: {{ study_info.title }}</h1>
+<hr />
+
+<h1>welcome</h1>
+{% endif %}
+
+{% endblock %}
