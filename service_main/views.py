@@ -40,6 +40,7 @@ def list_study(request):
         study_list = {
             'study_list': Study.objects.filter(
                 title=request.POST['search-study'],
+                is_available=True,
             )
         }
     else:

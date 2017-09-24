@@ -13,6 +13,7 @@ class Study(models.Model):
     deposit = models.IntegerField(default=0)
     url = models.SlugField(unique=True, default=_generate_url)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_available = models.BooleanField(default=True)
     description = models.TextField()
 
     def __str__(self):
