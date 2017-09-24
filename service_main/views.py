@@ -32,7 +32,8 @@ def create_study(request):
 def my_study(request):
     study_list = {
         'manage_study_list': Study.objects.filter(admin=request.user),
-        'belong_study_list': StudyRequest.objects.filter(user=request.user),
+        'belong_study_list': StudyRequest.objects.filter(user=request.user, approval=True),
+        'requested_study_list': StudyRequest.objects.filter(user=request.user, approval=False),
     }
 
     return render(request, 'service/my_study.html', study_list)

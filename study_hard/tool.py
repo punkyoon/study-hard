@@ -25,9 +25,23 @@ def _is_already_admin(study, user):
 
 
 def _check_request_avaliable(study, user):
-    print(_is_already_admin(study, user))
-    print(_is_repeat_request(study, user))
     if _is_already_admin(study, user) or _is_repeat_request(study, user):
         return False    # avaliable
     else:
         return True    # avaiable not
+
+
+def _approve_study(study, user, is_ok=True):
+    if is_ok:
+        study_request = StudyRequest.objects.get(study=study, user=user)
+        StudyUser.objects.create(study=study, user=user)
+        
+        study_request.approval = True
+        study_request.save()
+
+    else:
+        study_request = StudyRequest.objects.get(study=study, user=user).delete()
+
+
+def _list_members(study):
+    return StudyUser.objects.filter(study=study)

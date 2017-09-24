@@ -1,6 +1,14 @@
 {% extends 'service_base.html' %}
 
 {% block contents %}
+<style>
+  .container {
+    margin-bottom: 7%;
+  }
+  .notice {
+    margin-bottom: 4%;
+  }
+</style>
 <!-- service title -->
 {% if study_info is None %}
 <h1>Invalid Study</h1>
@@ -12,7 +20,68 @@
 <h1>Study: {{ study_info.title }}</h1>
 <hr />
 
-<h1>welcome</h1>
+<!-- Admin can upload notice -->
+{% if is_admin %}
+  <h3>Upload Notice</h3>
+  <hr />
+
+  <div class="container">
+    <div class="form-group">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control" name="notice" rows="4" cols="50" autofocus></textarea>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-success pull-right" type="submit">Upload Notice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endif %}
+
+<!-- List of notice -->
+<h3>New Notice</h3>
+<hr />
+
+<div class="notice container">
+  {% for notice in new_notice %}
+  <div class="card">
+      <div class="card-body">
+      <p class="card-text">{{ notice.contents }}</p>
+      <h6 class="card-subtitle mb-2 text-muted">{{ notice.upload_time }}</h6>
+      </div>
+  </div>
+  <br />
+  {% empty %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Sorry</h3>
+      <p class="card-text">There's no notice yet..</p>
+      </div>
+  </div>
+  {% endfor %}
+  <p class="pull-right"><a href="#">More details..</a></p>
+</div>
+
+<!-- List of study memeber -->
+<h3>Study member</h3>
+<hr />
+
+<div class="container">
+  <ul class="list-group">
+  {% for member in members %}
+      <li class="list-group-item">
+      <a href="#">{{ member.user.username }} / {{ member.user.email }}</a>
+      </li>
+  {% empty %}
+      <li class="list-group-item">
+      <i class="fa fa-meh-o" aria-hidden="true"></i> It has No members!
+      </li>
+  {% endfor %}
+  </ul>
+</div>
+
 {% endif %}
 
 {% endblock %}

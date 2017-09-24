@@ -38,7 +38,7 @@
     <h4 class="card-title">{{ belong.study.title }}</h4>
     <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ belong.study.deposit }}</h6>
     <p class="card-text">{{ belong.study.description }}</p>
-    <a href="/{{ belong.study.url }}" class="card-link">Go to manage page</a>
+    <a href="/{{ belong.study.url }}" class="card-link">Go to study page</a>
   </div>
 </div>
 <br />
@@ -47,6 +47,29 @@
   <div class="card-body">
     <h3 class="card-title">Sorry</h3>
     <p class="card-text">There's no study you belong to..</p>
+  </div>
+</div>
+{% endfor %}
+
+<br />
+
+<!-- study list user requested to join -->
+<h3>Study list you requested to join</h3>
+<hr />
+{% for requested in requested_study_list %}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ requested.study.title }}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ requested.study.deposit }}</h6>
+    <p class="card-text">{{ requested.study.description }}</p>
+  </div>
+</div>
+<br />
+{% empty %}
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Sorry</h3>
+    <p class="card-text">There's no study you requested to join..</p>
   </div>
 </div>
 {% endfor %}
