@@ -5,18 +5,19 @@
 <h1>Study List</h1>
 
 <!-- create new study -->
-<a href="#" class="btn btn-primary">New Study</a>
+<a href="#" class="btn btn-primary">
+    <i class="fa fa-plus" aria-hidden="true"></i> New Study
+</a>
 
 <!-- search study -->
 <fieldset>
   <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     <div class="form-group">
-      <label for="password-confirm">Search Study</label>
-      <input id="search-study" name="search-study" type="text" placeholder="Study name" />
-    </div>
-  
-    <div>
-      <button type="submit" class="btn btn-primary">Search</button>
+      <input id="search-study" name="search-study" type="text" placeholder="Search Study" />
+      <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search" aria-hidden="true"></i> Search
+      </button>
     </div>
   </form>
 </fieldset>
@@ -31,5 +32,5 @@
       <a href="#" class="btn btn-primary">Join Request</a>
     </div>
   </div>
-{$ endfor %}
+{% endfor %}
 {% endblock %}
