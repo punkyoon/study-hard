@@ -3,7 +3,7 @@ from service_main.models import Study, StudyUser, StudyRequest
 
 
 class StudyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'deposit', 'url', 'admin')
+    list_display = ('title', 'deposit', 'url', 'admin')
 
 
 class StudyUserAdmin(admin.ModelAdmin):
