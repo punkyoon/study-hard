@@ -4,5 +4,8 @@
 {% endblock %}
 
 {% block operation %}
-<h1>{{ request.user.username }}, Hello!</h1>
+<h1><i class="fa fa-user" aria-hidden="true"></i> Profile</h1>
+<h2>{{ request.user.username }}, Hello!</h2>
+<a href="{% url 'password_change' %}">Password Change</a>
+
 {% endblock %}
