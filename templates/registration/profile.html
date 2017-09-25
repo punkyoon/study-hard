@@ -18,9 +18,10 @@
 <h4>Last Login</h4>
 <p>{{ request.user.last_login|date:'Y-m-d H:i:s' }}</p>
 
-<a class="" href="{% url 'study_list' %}">Go to Service main</a>
+<a class="btn btn-primary" href="{% url 'study_list' %}">Go to Service main</a>
+
 <div class="container row">
-  <a class="" href="{% url 'password_change' %}">Password Change</a>
-  <a class="" href="{% url 'delete_account' %}">Delete Account</a>
+  <a class="btn btn-secondary" href="{% url 'password_change' %}" style="margin-right: 1%;">Password Change</a>
+  <a class="btn btn-danger" href="{% url 'delete_account' %}">Delete Account</a>
 </div>
 {% endblock %}

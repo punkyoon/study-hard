@@ -4,15 +4,15 @@
 {% endblock %}
 
 {% block operation %}
-<h1><i class="fa fa-key" aria-hidden="true"></i> Delete Account</h1>
+<h1><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Account</h1>
 <hr />
 
+<p>Please write your username</p>
 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>
     <div class="form-group">
-      <label for="check-username">Please write your username</label>
-      <input id="check-username" name="username" type="text" placeholder="username" required/>
+      <input class="form-control col-sm-4" id="check-username" name="username" type="text" placeholder="username" required/>
     </div>
 
     <div class="form-group">
@@ -24,7 +24,7 @@
     </div>
       
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Delete Account</button>
+      <button type="submit" class="btn btn-danger">Delete Account</button>
     </div>
   </fieldset>
 </form>
