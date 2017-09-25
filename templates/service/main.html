@@ -20,26 +20,6 @@
 <h1>Study: {{ study_info.title }}</h1>
 <hr />
 
-<!-- Admin can upload notice -->
-{% if is_admin %}
-  <h3>Upload Notice</h3>
-  <hr />
-
-  <div class="container">
-    <div class="form-group">
-      <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-            <textarea class="form-control" name="notice" rows="4" cols="50" autofocus></textarea>
-        </div>
-        <div class="text-center">
-          <button class="btn btn-success pull-right" type="submit">Upload Notice</button>
-        </div>
-      </form>
-    </div>
-  </div>
-{% endif %}
-
 <!-- List of notice -->
 <h3>New Notice</h3>
 <hr />
@@ -61,7 +41,7 @@
       </div>
   </div>
   {% endfor %}
-  <p class="pull-right"><a href="#">More details..</a></p>
+  <p class="pull-right"><a href="notice/">More details..</a></p>
 </div>
 
 <!-- List of study memeber -->
@@ -81,7 +61,6 @@
   {% endfor %}
   </ul>
 </div>
-
 {% endif %}
 
 {% endblock %}

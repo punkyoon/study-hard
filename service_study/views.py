@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from service_study.models import Notice
-from study_hard.tool import _get_study, _list_members
+from study_hard.tool import _get_study, _get_notice, _list_members
 
 
 @login_required
@@ -11,16 +11,12 @@ def study_main(request, url):
 
     if study is None:
         return redirect('study_list')
-
-    if request.method == 'POST' and request.user == study.admin:
-        Notice.objects.create(study=study, contents=request.POST['notice'])
     
     notices = Notice.objects.filter(study=study).order_by('-upload_time')[:3]
     is_admin = True if request.user == study.admin else False;
     info = {
         'study_info': study,
         'new_notice': notices,
-        'is_admin': is_admin,
         'members': _list_members(study)
     }
     return render(request, 'service/main.html', info)
@@ -46,11 +42,20 @@ def manage_attandance(request):
 
 
 @login_required
-def upload_notice(request):
-    if request.method == 'POST':
-        Notice.objects.create()
+def list_notice(request, url):
+    study = _get_study(url)
 
+    if study is None:
+        return redirect('study_list')
 
-@login_required
-def list_notice(request):
-    pass
+    is_admin = True if request.user == study.admin else False
+    if request.method == 'POST' and is_admin:
+        Notice.objects.create(study=study, contents=request.POST['notice'])
+
+    info = {
+        'study_info': study,
+        'notices': _get_notice(study),
+        'is_admin': is_admin,
+    }
+
+    return render(request, 'service/notice.html', info)

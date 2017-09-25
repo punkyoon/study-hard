@@ -4,5 +4,6 @@ from service_study import views
 
 
 urlpatterns = [
-    #url(r'^$', main_view, name='main'),
+    url(r'^$', views.study_main, name='study_main'),
+    url(r'^notice/$', views.list_notice, name='notice'),
 ]

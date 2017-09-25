@@ -10,6 +10,13 @@ def _get_study(url):
         return None
 
 
+def _get_notice(study):
+    try:
+        return Notice.objects.filter(study=study)
+    except:
+        return None
+
+
 def _is_repeat_request(study, user):
     try:
         StudyRequest.objects.get(study=study, user=user)
