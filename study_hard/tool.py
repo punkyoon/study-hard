@@ -17,6 +17,13 @@ def _get_notice(study):
         return None
 
 
+def _get_study_request_list(study):
+    try:
+        return StudyRequest.objects.filter(study=study)
+    except:
+        return None
+
+
 def _is_repeat_request(study, user):
     try:
         StudyRequest.objects.get(study=study, user=user)
