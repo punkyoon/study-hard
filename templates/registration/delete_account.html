@@ -1,0 +1,31 @@
+{% extends 'registration_base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block operation %}
+<h1><i class="fa fa-key" aria-hidden="true"></i> Delete Account</h1>
+<hr />
+
+<form class="form-horizontal" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>
+    <div class="form-group">
+      <label for="check-username">Please write your username</label>
+      <input id="check-username" name="username" type="text" placeholder="username" required/>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <label for="checkbox" class="form-check-label">
+          <input name="check" id="checkbox" class="form-check-input" type="checkbox" required> I've read the terms and conditions.
+        </label>
+      </div>
+    </div>
+      
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Delete Account</button>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}

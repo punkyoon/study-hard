@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from service_main.models import Study, StudyUser, StudyRequest
 from service_study.models import Notice, Attendance
 

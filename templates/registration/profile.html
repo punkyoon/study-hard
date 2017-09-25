@@ -5,7 +5,22 @@
 
 {% block operation %}
 <h1><i class="fa fa-user" aria-hidden="true"></i> Profile</h1>
-<h2>{{ request.user.username }}, Hello!</h2>
-<a href="{% url 'password_change' %}">Password Change</a>
+<hr />
 
+<h2>{{ request.user.username }}, Hello!</h2>
+
+<h4>E-mail</h4>
+<p>{{ request.user.email }}</p>
+
+<h4>Date joined</h4>
+<p>{{ request.user.date_joined|date:'Y-m-d H:i:s' }}</p>
+
+<h4>Last Login</h4>
+<p>{{ request.user.last_login|date:'Y-m-d H:i:s' }}</p>
+
+<a class="" href="{% url 'study_list' %}">Go to Service main</a>
+<div class="container row">
+  <a class="" href="{% url 'password_change' %}">Password Change</a>
+  <a class="" href="{% url 'delete_account' %}">Delete Account</a>
+</div>
 {% endblock %}
