@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from service_main.models import Study, StudyUser, StudyRequest
 from service_study.models import Notice, Attendance
 
@@ -5,6 +6,20 @@ from service_study.models import Notice, Attendance
 def _get_study(url):
     try:
         return Study.objects.get(url=url)
+    except:
+        return None
+
+
+def _get_notice(study):
+    try:
+        return Notice.objects.filter(study=study)
+    except:
+        return None
+
+
+def _get_study_request_list(study):
+    try:
+        return StudyRequest.objects.filter(study=study)
     except:
         return None
 

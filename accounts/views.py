@@ -34,3 +34,17 @@ def register_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'registration/profile.html')
+
+
+@login_required
+def delete_account_view(request):
+    if request.method == 'POST':
+        if request.user.username == request.POST['username']:
+            return redirect('delete_account_done')
+    return render(request, 'registration/delete_account.html')
+
+
+@login_required
+def delete_account_done_view(request):
+    User.objects.get(username=request.user.username).delete()
+    return render(request, 'registration/delete_account_done.html')
