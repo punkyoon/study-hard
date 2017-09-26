@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-def approve_join_request(request):
+def approve_join_request(request, user):
     pass
 
 
