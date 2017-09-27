@@ -60,3 +60,12 @@ def _approve_study(study, user, is_ok=True):
 
 def _list_members(study):
     return StudyUser.objects.filter(study=study)
+
+
+def _remove_my_study(study, user):
+    try:
+        StudyUser.objects.get(study=study, user=user).delete()
+        StudyRequest.objects.get(study=study, user=user).delete()
+        return True    # Success
+    except:
+        return False    # Fail
