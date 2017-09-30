@@ -6,10 +6,25 @@ from study_hard import tool
 
 
 @login_required
+def study_admin_main(request, url):
+    study = tool._get_study(url)
+
+    if tool._is_already_admin(study, request.user):
+        info = {
+            'study': study,
+            'user_list': tool._list_members(study),
+            'manage_request': tool._get_study_request_list(study),
+            'manage_deposit': '',
+            'manage_attandance': '',
+            'manage_fine': '',
+        }
+
+
+@login_required
 def manage_join_request(request, url):
     study = tool._get_study(url)
 
-    if not _is_already_admin(study, request.user):
+    if not tool._is_already_admin(study, request.user):
         return redirect('my_study')
     
     if request.method == 'POST':
@@ -36,7 +51,7 @@ def exit_study(request, url):
 def remove_study(request, url):
     if request.method == 'POST':
         study = tool._get_study(url)
-        if tool._is_already_admin(study, user)
+        if tool._is_already_admin(study, request.user)
             study.delete()
             return redirect('my_study')
 

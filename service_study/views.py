@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from service_study.models import Notice
-from study_hard.tool import _get_study, _get_notice, _list_members
+from study_hard.tool import _get_study, _get_notice, _list_members, _is_already_admin
 
 
 @login_required
@@ -13,7 +13,7 @@ def study_main(request, url):
         return redirect('study_list')
     
     notices = Notice.objects.filter(study=study).order_by('-upload_time')[:3]
-    is_admin = True if request.user == study.admin else False;
+    is_admin = _is_already_admin(study, request.user)
     info = {
         'study_info': study,
         'new_notice': notices,
@@ -48,13 +48,15 @@ def list_notice(request, url):
     if study is None:
         return redirect('study_list')
 
-    is_admin = True if request.user == study.admin else False
+    is_admin = _is_already_admin(study, request.user)
     if request.method == 'POST' and is_admin:
         Notice.objects.create(study=study, contents=request.POST['notice'])
 
+    print(_get_notice(study))
+
     info = {
         'study_info': study,
-        'notices': _get_notice(study),
+        'notices': _get_notice(study).order_by('-upload_time'),
         'is_admin': is_admin,
     }
 

@@ -10,7 +10,7 @@ class Notice(models.Model):
     contents = models.TextField()
 
     def __str__(self):
-        return str(self.study.name)
+        return str(self.study.title)
 
 
 class Attendance(models.Model):
