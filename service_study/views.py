@@ -21,16 +21,21 @@ def study_main(request, url):
     }
     return render(request, 'service/main.html', info)
 
+
 @login_required
-def kick_out_member(request, url):
-    study = _get_study(url)
+def study_admin(request, url):
+    study = _get_study(study)
 
     if study is None:
         return redirect('study_list')
 
-    if request.method == 'POST':
-        pass
-    
+    info = {
+        'members': _list_members(study),
+        'attandance':,
+        'deposit':,
+        'fine':,
+    }
+
     return render(request, 'service/manage.html')
 
 
@@ -42,7 +47,8 @@ def manage_fine(request, url):
         return redirect('study_list')
 
     if request.method == 'POST':
-        pass
+        request.POST['username']
+        request.POST['fine']
     
     return render(request, 'service/manage.html')
 
@@ -55,7 +61,8 @@ def manage_deposit(request, url):
         return redirect('study_list')
 
     if request.method == 'POST':
-        pass
+        request.POST['username']
+        request.POST['deposit']
     
     return render(request, 'service/manage.html')
 
@@ -68,7 +75,9 @@ def manage_attandance(request):
         return redirect('study_list')
 
     if request.method == 'POST':
-        pass
+        request.POST['username']
+        request.POST['status']
+        request.POST['date']
     
     return render(request, 'service/manage.html')
 
