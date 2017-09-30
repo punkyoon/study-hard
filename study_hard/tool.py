@@ -12,7 +12,7 @@ def _get_study(url):
 
 def _get_notice(study):
     try:
-        return Notice.objects.filter(study=study)
+        return Notice.objects.filter(study=study).order_by('-upload_time')
     except:
         return None
 

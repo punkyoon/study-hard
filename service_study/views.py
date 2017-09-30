@@ -12,7 +12,7 @@ def study_main(request, url):
     if study is None:
         return redirect('study_list')
     
-    notices = Notice.objects.filter(study=study).order_by('-upload_time')[:3]
+    notices = _get_notice(study)[:3]
     is_admin = _is_already_admin(study, request.user)
     info = {
         'study_info': study,
@@ -56,7 +56,7 @@ def list_notice(request, url):
 
     info = {
         'study_info': study,
-        'notices': _get_notice(study).order_by('-upload_time'),
+        'notices': _get_notice(study),
         'is_admin': is_admin,
     }
 
