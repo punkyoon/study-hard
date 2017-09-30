@@ -1,7 +1,6 @@
 # study-hard
 
-Redhat Pink Coding Festival
-Konkuk University Team
+//프로젝트에 대한 설명
 
 ## Overview
 
@@ -15,8 +14,7 @@ Konkuk University Team
 #### Build Requirements
 
 * `Python 3.5+`
-* `Django 1.10+`
-* `Docker` *(recommended)*
+* `Django 1.11+`
 * ...
 
 #### Installation
