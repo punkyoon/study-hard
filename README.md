@@ -1,12 +1,20 @@
 # study-hard
-//프로젝트 설명
+
+Study-hard is a Web-Based Application for managing study program. 
+> People can be grouped into specific topics, subjects, or goals to set up tasks, and manage schedules.
+
+Any group or individual studies can be managed without App-installation. 
+...
 
 ## Overview
 
 ## Features
+* Find study in list
+* Make study in specific area, University, gender, etc. 
 * Gather study group
 * Managing groups
 * Automate disribution by using Docker
+* ...
 
 ## Installation and Setting
 
@@ -18,11 +26,10 @@
 
 #### Installation
 
-...
+* `$ pip install -r requirements.txt`
+* ...
 
 ## Third Party Libraries
-
-Please check [NOTICE](https://github.com/dduk-ddak/coding-night-live/blob/master/NOTICE)
 
 * [`django`](https://github.com/django/django) 1.10+
 * ...
