@@ -29,6 +29,9 @@ Any group or individual studies can be managed without App-installation.
 * `$ pip install -r requirements.txt`
 * ...
 
+If you want to know more about, please come to our [wiki](https://github.com/punkyoon/study-hard.wiki.git)
+
+
 ## Third Party Libraries
 
 * [`django`](https://github.com/django/django) 1.10+
