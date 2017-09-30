@@ -17,11 +17,29 @@ def _get_notice(study):
         return None
 
 
+def _get_user(username):
+    try:
+        return User.objects.get(username=username)
+    except:
+        return None
+
+
 def _get_study_request_list(study):
     try:
         return StudyRequest.objects.filter(study=study)
     except:
         return None
+
+
+def _get_study_attendance_list(study, user_list):
+    attendance_list = list()
+    try:
+        for user in user_list:
+            attendance_list.append(Attendance.object.get(study=study, user=user))
+        attendance_list.sort()
+        return attendance_list
+    except:
+        None
 
 
 def _is_repeat_request(study, user):
