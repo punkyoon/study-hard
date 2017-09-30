@@ -4,6 +4,7 @@ Study-hard is a Web-Based Application for managing study program.
 > People can be grouped into specific topics, subjects, or goals to set up tasks, and manage schedules.
 
 Any group or individual studies can be managed without App-installation. 
+...
 
 ## Overview
 
@@ -13,6 +14,7 @@ Any group or individual studies can be managed without App-installation.
 * Gather study group
 * Managing groups
 * Automate disribution by using Docker
+* ...
 
 ## Installation and Setting
 
@@ -24,9 +26,7 @@ Any group or individual studies can be managed without App-installation.
 
 #### Installation
 
-* `$ sudo apt-get install python3.5`
-* `$ sudo apt-get install django`
-* `$ sudo pip install -r requirements.txt` or `$ sudo pip3 install -r requirements.txt`
+* `$ pip install -r requirements.txt`
 * ...
 
 ## Third Party Libraries
