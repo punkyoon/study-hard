@@ -1,47 +1,48 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
+from service_main.models import StudyUser
 from service_study.models import Notice
-from study_hard.tool import _get_study, _get_notice, _list_members, _is_already_admin
+from study_hard import tool
 
 
 @login_required
 def study_main(request, url):
-    study = _get_study(url)
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
     
-    notices = _get_notice(study)[:3]
-    is_admin = _is_already_admin(study, request.user)
+    notices = tool._get_notice(study)[:3]
+    is_admin = tool._is_already_admin(study, request.user)
     info = {
         'study_info': study,
         'new_notice': notices,
-        'members': _list_members(study)
+        'members': tool._list_members(study)
     }
     return render(request, 'service/main.html', info)
 
 
 @login_required
-def study_admin(request, url):
-    study = _get_study(study)
+def study_info(request, url):
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
 
+    user_list = tool._list_members(study)
     info = {
-        'members': _list_members(study),
-        'attandance':,
-        'deposit':,
-        'fine':,
+        'study_info': study,
+        'members': user_list,
+        'attendance_list': tool._get_study_attendance_list(study, user_list),
     }
 
-    return render(request, 'service/manage.html')
+    return render(request, 'service/info.html', info)
 
 
 @login_required
 def manage_fine(request, url):
-    study = _get_study(url)
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
@@ -50,12 +51,12 @@ def manage_fine(request, url):
         request.POST['username']
         request.POST['fine']
     
-    return render(request, 'service/manage.html')
+    return render(request, 'service/info.html')
 
 
 @login_required
 def manage_deposit(request, url):
-    study = _get_study(url)
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
@@ -64,12 +65,12 @@ def manage_deposit(request, url):
         request.POST['username']
         request.POST['deposit']
     
-    return render(request, 'service/manage.html')
+    return render(request, 'service/info.html')
 
 
 @login_required
 def manage_attandance(request):
-    study = _get_study(url)
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
@@ -79,12 +80,12 @@ def manage_attandance(request):
         request.POST['status']
         request.POST['date']
     
-    return render(request, 'service/manage.html')
+    return render(request, 'service/info.html')
 
 
 @login_required
 def list_notice(request, url):
-    study = _get_study(url)
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
@@ -102,3 +103,20 @@ def list_notice(request, url):
     }
 
     return render(request, 'service/notice.html', info)
+
+
+@login_required
+def study_user_info(request, url, username):
+    study = tool._get_study(url)
+    user = tool._get_user(username)
+
+    if study is None or user is None:
+        return redirect('study_list')
+
+    info = {
+        'study_info': study,
+        'attendance_list': tool._get_user_attendance_list(study, user),
+        'study_user': StudyUser.objects.get(study=study, user=user),
+    }
+
+    return render(request, 'service/study_user_info.html', info)
