@@ -31,8 +31,6 @@ Any group or individual studies can be managed without App-installation.
 
 ## Third Party Libraries
 
-Please check [NOTICE](https://github.com/dduk-ddak/coding-night-live/blob/master/NOTICE)
-
 * [`django`](https://github.com/django/django) 1.10+
 * ...
 
