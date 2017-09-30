@@ -1,13 +1,12 @@
 # study-hard
-
-//프로젝트에 대한 설명
+//프로젝트 설명
 
 ## Overview
 
 ## Features
-* 기능1
-* 기능2
-* ...
+* Gather study group
+* Managing groups
+* Automate disribution by using Docker
 
 ## Installation and Setting
 
