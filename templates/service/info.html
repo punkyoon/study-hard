@@ -1,0 +1,48 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<style>
+  .container {
+    margin-bottom: 1%;
+  }
+</style>
+<!-- service title -->
+<h1>Study Info: {{ study_info.title }}</h1>
+<hr />
+
+<!-- List of study memeber -->
+<h3>Study member</h3>
+<hr />
+
+<!-- member info details -->
+<div class="card">
+  {% for member in members %}
+    <div class="card-body">
+      <h4 class="card-title">{{ member.user.username }}</h4>
+      <p class="card-text">Deposit: {{ member.deposit_pay }} / Fine: {{ member.fine }}</p>
+    </div>
+  {% empty %}
+    <div class="card-body">
+      <p class="card-text"><i class="fa fa-meh-o" aria-hidden="true"></i> It has No members!</p>
+    </div>
+  {% endfor %}
+</div>
+<br />
+
+<!-- List of attendance -->
+<h3>Attendance List</h3>
+<hr />
+
+<div class="card">
+  <div class="card-body">
+  {% for attendance in attendance_list %}
+    {% for study_user in attendance %}
+      <h4 class="card-title">{{ study_user.user.username }}</h4>
+      <p class="card-text">{{ study_user.status }} / {{ study_user.date }}</p>
+    {% endfor %}
+  {% empty %}
+    <p class="card-text"><i class="fa fa-meh-o" aria-hidden="true"></i> It has No attendance_list!</p>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

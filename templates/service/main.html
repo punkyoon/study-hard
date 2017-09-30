@@ -52,7 +52,7 @@
   <ul class="list-group">
   {% for member in members %}
       <li class="list-group-item">
-      <a href="#">{{ member.user.username }} / {{ member.user.email }}</a>
+      <a href="user/{{ member.user.username }}">{{ member.user.username }} / {{ member.user.email }}</a>
       </li>
   {% empty %}
       <li class="list-group-item">
@@ -62,5 +62,5 @@
   </ul>
 </div>
 {% endif %}
-
+<br />
 {% endblock %}

@@ -17,14 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from study_hard.views import main_view
-#from service_study.views import study_main
 
 
 urlpatterns = [
     url(r'^$', main_view, name='main'),
     url(r'^service_main/', include('service_main.urls')),
-    #url(r'^([a-zA-Z]{3,}-[a-zA-Z]{3,}-[0-9]{1,4})/$', study_main, name='study_main'),
-    #url(r'^service_study/', include('service_study.urls')),
     url(r'^([a-zA-Z]{3,}-[a-zA-Z]{3,}-[0-9]{1,4})/', include('service_study.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),

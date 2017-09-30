@@ -24,6 +24,13 @@ def _get_user(username):
         return None
 
 
+def _get_user_attendance_list(study, user):
+    try:
+        return Attendance.objects.filter(study=study, user=user)
+    except:
+        return None
+
+
 def _get_study_request_list(study):
     try:
         return StudyRequest.objects.filter(study=study)
@@ -34,9 +41,10 @@ def _get_study_request_list(study):
 def _get_study_attendance_list(study, user_list):
     attendance_list = list()
     try:
-        for user in user_list:
-            attendance_list.append(Attendance.object.get(study=study, user=user))
+        for study_user in user_list:
+            attendance_list.append(Attendance.objects.filter(study=study, user=study_user.user))
         attendance_list.sort()
+        print(attendance_list)
         return attendance_list
     except:
         None
