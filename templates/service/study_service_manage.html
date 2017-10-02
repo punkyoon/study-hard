@@ -16,7 +16,7 @@
 <h3>Join requests</h3>
 <hr />
 
-<div class="notice container">
+<div class="container">
   {% for join_request in join_requests %}
   <div class="card">
       <div class="card-body">
@@ -42,6 +42,39 @@
   {% endfor %}
 </div>
 <br />
+
+
+<!-- Member manage -->
+<h3>Manage Member</h3>
+<hr />
+
+<div class="container">
+  {% for member in member_list %}
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ member.user.username }}</h4>
+      <p class="card-subtitle mb-2 text-muted">
+        {{ member.user.profile.gender }} / {{ member.user.profile.institution }}
+      </p>
+      <p class="card-text">
+        {{ member.user.profile.phone }} / {{ member.user.email }}
+      </p>
+      <!--<a class="btn btn-primary" style="color: #FFFFFF;" href="approve/{{ member.user.username }}">Approve</a>-->
+      <a class="btn btn-danger" style="color: #FFFFFF;" href="kickout_member/{{ member.user.username }}">Kickout</a>
+    </div>
+  </div>
+  <br />
+  {% empty %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Sorry</h3>
+      <p class="card-text">There's no member yet..</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<br />
+
 
 <!-- Remove Study -->
 <h3>Remove Study</h3>
