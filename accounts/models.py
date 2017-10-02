@@ -9,3 +9,6 @@ class Profile(models.Model):
     gender = models.CharField(max_length=8, default='Secret')
     phone = PhoneNumberField()
     institution = models.CharField(max_length=32, default='None')
+
+    def __str__(self):
+        return str(self.user)

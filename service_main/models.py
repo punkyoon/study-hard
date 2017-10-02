@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import Profile
 from pokinator import Pokinator
 
 
@@ -38,4 +39,4 @@ class StudyRequest(models.Model):
     approval = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.user.username)
+        return str(self.user)
