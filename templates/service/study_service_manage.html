@@ -1,0 +1,46 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+{% if study_info is None %}
+<h1>Invalid Study</h1>
+<hr />
+
+<a href="{% url 'main' %}"><h3>Back to Main</h3></a>
+
+{% else %}
+<h1>Study: {{ study_info.title }}</h1>
+<hr />
+
+<!-- List of join request -->
+<h3>Join requests</h3>
+<hr />
+
+<div class="notice container">
+  {% for join_request in join_requests %}
+  <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{ join_request.user.username }}</h4>
+        <p class="card-subtitle mb-2 text-muted">
+          {{ join_request.user.profile.gender }} / {{ join_request.user.profile.institution }}
+        </p>
+        <p class="card-text">
+          {{ join_request.user.profile.phone }} / {{ join_request.user.email }}
+        </p>
+        <a class="btn btn-primary" style="color: #FFFFFF;" href="approve/{{ join_request.user.username }}">Approve</a>
+        <a class="btn btn-danger" style="color: #FFFFFF;" href="reject/{{ join_request.user.username }}">Reject</a>
+      </div>
+  </div>
+  <br />
+  {% empty %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Sorry</h3>
+      <p class="card-text">There's no request yet..</p>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+<br />
+{% endif %}
+{% endblock %}

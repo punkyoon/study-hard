@@ -31,9 +31,16 @@ def _get_user_attendance_list(study, user):
         return None
 
 
+def _get_study_request(study, user):
+    try:
+        return StudyRequest.objects.get(user=user)
+    except:
+        return None
+
+
 def _get_study_request_list(study):
     try:
-        return StudyRequest.objects.filter(study=study)
+        return StudyRequest.objects.filter(study=study, approval=False)
     except:
         return None
 
