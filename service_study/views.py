@@ -90,15 +90,13 @@ def list_notice(request, url):
     if study is None:
         return redirect('study_list')
 
-    is_admin = _is_already_admin(study, request.user)
+    is_admin = tool._is_already_admin(study, request.user)
     if request.method == 'POST' and is_admin:
         Notice.objects.create(study=study, contents=request.POST['notice'])
 
-    print(_get_notice(study))
-
     info = {
         'study_info': study,
-        'notices': _get_notice(study),
+        'notices': tool._get_notice(study),
         'is_admin': is_admin,
     }
 
