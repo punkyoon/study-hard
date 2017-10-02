@@ -51,7 +51,6 @@ def _get_study_attendance_list(study, user_list):
         for study_user in user_list:
             attendance_list.append(Attendance.objects.filter(study=study, user=study_user.user))
         attendance_list.sort()
-        print(attendance_list)
         return attendance_list
     except:
         None

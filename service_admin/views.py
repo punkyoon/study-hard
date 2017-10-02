@@ -90,10 +90,18 @@ def kick_out_member(request, url):
 
 @login_required
 def remove_study(request, url):
+    study = tool._get_study(url)
+
+    if tool._is_already_admin(study, request.user) is False:
+        return redirect('my_study')
+
     if request.method == 'POST':
-        study = tool._get_study(url)
-        if tool._is_already_admin(study, request.user):
+        if request.POST['title'] == study.title:
             study.delete()
             return redirect('my_study')
 
-    return render(request, 'service/remove_study.html')
+    info = {
+        'study_info': study,
+    }
+
+    return render(request, 'service/remove_study.html', info)

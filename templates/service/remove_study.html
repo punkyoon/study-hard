@@ -1,0 +1,31 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+<h1>Study Delete: {{ study_info.title }}</h1>
+<hr />
+
+<p>Please write study room title</p>
+<form class="form-horizontal" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>
+    <div class="form-group">
+      <input class="form-control col-sm-4" id="check-title" name="title" type="text" placeholder="Study room title" required/>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <label for="checkbox" class="form-check-label">
+          <input name="check" id="checkbox" class="form-check-input" type="checkbox" required> I've read the terms and conditions.
+        </label>
+      </div>
+    </div>
+      
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">Delete Study</button>
+      <a href="/service_admin/{{ study_info.url }}" class="btn btn-primary">Back</a>
+    </div>
+  </fieldset>
+</form>
+
+{% endblock %}
