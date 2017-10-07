@@ -63,4 +63,12 @@
 </div>
 {% endif %}
 <br />
+
+{% if request.user != study_info.admin %}
+  <h4>Exit Study</h4>
+  <hr />
+
+  <a class="btn btn-danger" href="exit/{{ request.user.username }}">Exit Study</a>
+  <br />
+{% endif %}
 {% endblock %}

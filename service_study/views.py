@@ -104,3 +104,26 @@ def study_user_info(request, url, username):
     }
 
     return render(request, 'service/study_user_info.html', info)
+
+
+@login_required
+def exit_study(request, url, username):
+    study = tool._get_study(url)
+    user = tool._get_user(username)
+    
+    if study is None or user is None:
+        return redirect('my_study')
+
+    info = {
+        'study_info': study,
+        'member': user,
+        'error': None
+    }
+
+    if request.method == 'POST':
+        if request.POST['username'] == user.username:
+            tool._remove_my_study(study, user)
+            return redirect('my_study')
+        info['error'] = 'Please write user username correctly..'
+
+    return render(request, 'service/exit_study.html', info)

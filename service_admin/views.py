@@ -66,19 +66,9 @@ def manage_deposit(request, url, username):
     if study is None or user is None:
         return redirect('my_study')
 
-    print(tool._manage_deposit(study, user))
+    tool._manage_deposit(study, user)
     
     return redirect('/service_admin/' + study.url)
-
-
-@login_required
-def exit_study(request, url):
-    if request.method == 'POST':
-        study = tool._get_study(url)
-        tool._remove_my_study(study, request.user)
-        return redirect('my_study')
-    
-    return render(request, 'service/exit_study.html')
 
 
 @login_required
@@ -108,13 +98,15 @@ def remove_study(request, url):
     if tool._is_already_admin(study, request.user) is False or study is None:
         return redirect('my_study')
 
+    info = {
+        'study_info': study,
+        'error': None
+    }
+
     if request.method == 'POST':
         if request.POST['title'] == study.title:
             study.delete()
             return redirect('my_study')
-
-    info = {
-        'study_info': study,
-    }
+        info['error'] = 'Please write study title correctly..'
 
     return render(request, 'service/remove_study.html', info)

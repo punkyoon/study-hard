@@ -2,15 +2,18 @@
 
 {% block contents %}
 <!-- service title -->
-<h1>Study Delete: {{ study_info.title }}</h1>
+<h1>Study : {{ study_info.title }}</h1>
 <hr />
 
-<p>Please write study room title</p>
+<h2>Exit study</h2>
+<hr />
+
+<p>Please write your username.</p>
 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>
     <div class="form-group">
-      <input class="form-control col-sm-4" id="check-title" name="title" type="text" placeholder="Study room title" required/>
+      <input class="form-control col-sm-4" id="check-username" name="username" type="text" placeholder="Your username" required/>
     </div>
 
     <div class="form-group">
@@ -22,14 +25,14 @@
     </div>
       
     <div class="form-group">
-      <button type="submit" class="btn btn-danger">Delete Study</button>
-      <a href="/service_admin/{{ study_info.url }}" class="btn btn-primary">Back</a>
+      <button type="submit" class="btn btn-danger">Exit Study</button>
+      <a href="/{{ study_info.url }}" class="btn btn-primary">Back</a>
     </div>
   </fieldset>
 </form>
 
 {% if error %}
-<p>{{ error }}</p>
+  <p>{{ error }}</p>
 {% endif %}
 
 {% endblock %}
