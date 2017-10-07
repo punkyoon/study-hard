@@ -19,6 +19,7 @@ def register_view(request):
             
             Profile.objects.create(
                 user=user,
+                name=request.POST['name'],
                 gender=request.POST['gender'],
                 phone='+82'+request.POST['phone'],
                 institution=request.POST['institution']
