@@ -70,5 +70,11 @@
 
   <a class="btn btn-danger" href="exit/{{ request.user.username }}">Exit Study</a>
   <br />
+{% else %}
+  <h4>Go to manage</h4>
+  <hr />
+
+  <a class="btn btn-primary" href="/service_admin/{{ study_info.url }}">Go to manage</a>
+  <br />
 {% endif %}
 {% endblock %}

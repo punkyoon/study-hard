@@ -31,6 +31,28 @@ def _get_user_attendance_list(study, user):
         return None
 
 
+def _get_study_list(option, user):
+    try:
+        # Manage Study List
+        if option == 'manage':
+            return Study.objects.filter(admin=user)
+
+        # Belong Study List
+        elif option == 'belong':
+            return StudyRequest.objects.filter(user=user, approval=True)
+
+        # Reuqested Study List
+        elif option == 'requested':
+            return StudyRequest.objects.filter(user=user, approval=False)
+        
+        # Error
+        else:
+            raise
+            
+    except:
+        return None
+
+
 def _get_study_request(study, user):
     try:
         return StudyRequest.objects.get(user=user)
