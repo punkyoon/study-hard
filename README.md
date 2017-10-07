@@ -34,7 +34,7 @@ If you want to know more about, please come to our [wiki](https://github.com/pun
 
 ## Third Party Libraries
 
-* [`django`](https://github.com/django/django) 1.10+
+* [`django`](https://github.com/django/django) 1.11+
 * ...
 
 ## Documentation
