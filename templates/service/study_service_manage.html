@@ -59,6 +59,9 @@
       <p class="card-text">
         {{ member.user.profile.phone }} / {{ member.user.email }}
       </p>
+      <a class="btn btn-danger" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/attend/">Attend</a>
+      <a class="btn btn-danger" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/late/">Late</a>
+      <a class="btn btn-danger" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/absent/">Absent</a>
       <a class="btn btn-info" style="color: #FFFFFF;" href="manage_deposit/{{ member.user.username }}">
         {% if member.deposit_pay is False %}
           Paid deposit

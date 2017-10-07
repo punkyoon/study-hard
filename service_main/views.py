@@ -31,9 +31,9 @@ def create_study(request):
 @login_required
 def my_study(request):
     study_list = {
-        'manage_study_list': tool._get_study_list('manage', request.user),
-        'belong_study_list': tool._get_study_list('belong', request.user),
-        'requested_study_list': tool._get_study_list('requested', request.user),
+        'manage_study_list': tool._get_study_list(request.user, 'manage'),
+        'belong_study_list': tool._get_study_list(request.user, 'belong'),
+        'requested_study_list': tool._get_study_list(request.user, 'requested'),
     }
 
     return render(request, 'service/my_study.html', study_list)

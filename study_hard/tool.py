@@ -1,4 +1,6 @@
+from django.utils import timezone
 from django.contrib.auth.models import User
+
 from service_main.models import Study, StudyUser, StudyRequest
 from service_study.models import Notice, Attendance
 
@@ -31,7 +33,7 @@ def _get_user_attendance_list(study, user):
         return None
 
 
-def _get_study_list(option, user):
+def _get_study_list(user, option):
     try:
         # Manage Study List
         if option == 'manage':
@@ -111,6 +113,36 @@ def _manage_deposit(study, user):
         return True    # Success
     except:
         return False    # Fail
+
+
+def _manage_attendance(study, user, option, date=None):
+    try:
+        #today = datetime.now()
+        attendance = Attendance.objects.get(
+            study=study,
+            user=user,
+            date=timezone.now().date()
+        )
+            
+    except:
+        attendance = Attendance.objects.create(study=study, user=user)
+
+    if date != None:
+        attendance.date = date
+
+    if option == 'attend':
+        attendance.status = 'attend'
+
+    elif option == 'late':
+        attendance.status = 'late'
+
+    elif option == 'absent':
+        attendance.status = 'absent'
+
+    else:
+        return None
+        
+    attendance.save()
 
 
 def _approve_study(study, user, is_ok=True):

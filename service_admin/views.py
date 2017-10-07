@@ -110,3 +110,18 @@ def remove_study(request, url):
         info['error'] = 'Please write study title correctly..'
 
     return render(request, 'service/remove_study.html', info)
+
+
+@login_required
+def manage_attendance(request, url, username, code):
+    study = tool._get_study(url)
+    user = tool._get_user(username)
+
+    if study is None or user is None:
+        return redirect('my_study')
+
+    #today = datetime.now()
+
+    tool._manage_attendance(study, user, code)
+    
+    return redirect('/service_admin/' + study.url)

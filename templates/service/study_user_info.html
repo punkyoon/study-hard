@@ -24,7 +24,7 @@
 {% for attendance in attendance_list %}
 <div class="card">
   <div class="card-body">
-      <b class="card-title">{{ attendance.date|date:'Y-m-d H:i:s' }}</b>
+      <b class="card-title">{{ attendance.date|date:'Y-m-d' }}</b>
       <p class="card-text">{{ attendance.status }}</p>
   </div>
 </div>
