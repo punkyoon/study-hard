@@ -32,7 +32,7 @@ def approve_join_request(request, url, username):
     
     if request.user == study.admin:
         study_request = tool._get_study_request(study, user)
-        if study_request is not None:
+        if study_request != None:
             study_request.approval = True
             study_request.save()
             StudyUser.objects.create(study=study, user=user)

@@ -55,7 +55,7 @@ def _get_study_list(option, user):
 
 def _get_study_request(study, user):
     try:
-        return StudyRequest.objects.get(user=user)
+        return StudyRequest.objects.get(study=study, user=user)
     except:
         return None
 
