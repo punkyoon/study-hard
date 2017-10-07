@@ -59,6 +59,19 @@ def reject_join_request(request, url, username):
 
 
 @login_required
+def manage_deposit(request, url, username):
+    study = tool._get_study(url)
+    user = tool._get_user(username)
+
+    if study is None or user is None:
+        return redirect('my_study')
+
+    print(tool._manage_deposit(study, user))
+    
+    return redirect('/service_admin/' + study.url)
+
+
+@login_required
 def exit_study(request, url):
     if request.method == 'POST':
         study = tool._get_study(url)

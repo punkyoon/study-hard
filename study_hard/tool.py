@@ -78,6 +78,19 @@ def _check_request_avaliable(study, user):
         return True    # avaiable not
 
 
+def _manage_deposit(study, user):
+    try:
+        study_user = StudyUser.objects.get(study=study, user=user)
+        if study_user.deposit_pay == True:
+            study_user.deposit_pay = False
+        else:
+            study_user.deposit_pay = True
+        study_user.save()
+        return True    # Success
+    except:
+        return False    # Fail
+
+
 def _approve_study(study, user, is_ok=True):
     if is_ok:
         study_request = StudyRequest.objects.get(study=study, user=user)

@@ -55,20 +55,6 @@ def manage_fine(request, url):
 
 
 @login_required
-def manage_deposit(request, url):
-    study = tool._get_study(url)
-
-    if study is None:
-        return redirect('study_list')
-
-    if request.method == 'POST':
-        request.POST['username']
-        request.POST['deposit']
-    
-    return render(request, 'service/info.html')
-
-
-@login_required
 def manage_attandance(request):
     study = tool._get_study(url)
 

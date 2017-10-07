@@ -52,14 +52,20 @@
   {% for member in member_list %}
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">{{ member.user.username }}</h4>
+      <h4 class="card-title"><a href="/{{ study_info.url }}/user/{{ member.user.username }}">{{ member.user.username }}</a></h4>
       <p class="card-subtitle mb-2 text-muted">
         {{ member.user.profile.gender }} / {{ member.user.profile.institution }}
       </p>
       <p class="card-text">
         {{ member.user.profile.phone }} / {{ member.user.email }}
       </p>
-      <!--<a class="btn btn-primary" style="color: #FFFFFF;" href="approve/{{ member.user.username }}">Approve</a>-->
+      <a class="btn btn-info" style="color: #FFFFFF;" href="manage_deposit/{{ member.user.username }}">
+        {% if member.deposit_pay is False %}
+          Paid deposit
+        {% else %}
+          Unpaid deposit
+        {% endif %}
+      </a>
       <a class="btn btn-danger" style="color: #FFFFFF;" href="kickout_member/{{ member.user.username }}">Kickout</a>
     </div>
   </div>
