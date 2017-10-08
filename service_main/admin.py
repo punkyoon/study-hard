@@ -7,7 +7,7 @@ class StudyAdmin(admin.ModelAdmin):
 
 
 class StudyUserAdmin(admin.ModelAdmin):
-    list_display = ('user', 'study', 'fine', 'deposit_pay')
+    list_display = ('user', 'study', 'deposit_pay')
 
 
 class StudyRequestAdmin(admin.ModelAdmin):

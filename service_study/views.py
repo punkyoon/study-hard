@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -14,11 +15,13 @@ def study_main(request, url):
         return redirect('study_list')
     
     notices = tool._get_notice(study)[:3]
+    fines = tool._get_study_fine_list(study)[:3]
     is_admin = tool._is_already_admin(study, request.user)
     info = {
         'study_info': study,
         'new_notice': notices,
-        'members': tool._list_members(study)
+        'new_fine': fines,
+        'members': tool._list_members(study),
     }
     return render(request, 'service/main.html', info)
 
@@ -41,35 +44,6 @@ def study_info(request, url):
 
 
 @login_required
-def manage_fine(request, url):
-    study = tool._get_study(url)
-
-    if study is None:
-        return redirect('study_list')
-
-    if request.method == 'POST':
-        request.POST['username']
-        request.POST['fine']
-    
-    return render(request, 'service/info.html')
-
-
-@login_required
-def manage_attandance(request):
-    study = tool._get_study(url)
-
-    if study is None:
-        return redirect('study_list')
-
-    if request.method == 'POST':
-        request.POST['username']
-        request.POST['status']
-        request.POST['date']
-    
-    return render(request, 'service/info.html')
-
-
-@login_required
 def list_notice(request, url):
     study = tool._get_study(url)
 
@@ -87,6 +61,35 @@ def list_notice(request, url):
     }
 
     return render(request, 'service/notice.html', info)
+
+
+@login_required
+def list_fine(request, url):
+    study = tool._get_study(url)
+
+    if study is None:
+        return redirect('study_list')
+
+    is_admin = tool._is_already_admin(study, request.user)
+    if request.method == 'POST' and is_admin:
+        user = tool._get_user(request.POST['username'])
+        tool._impose_fine(
+            study,
+            user,
+            request.POST['reason'],
+            request.POST['rate']
+        )
+    
+    user_list = tool._list_members(study)
+    fines = tool._get_study_fine_list(study)
+    info = {
+        'study_info': study,
+        'user_list': user_list,
+        'fines': fines,
+        'is_admin': is_admin,
+    }
+
+    return render(request, 'service/fine_list.html', info)
 
 
 @login_required

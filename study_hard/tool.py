@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 from service_main.models import Study, StudyUser, StudyRequest
-from service_study.models import Notice, Attendance
+from service_study.models import Notice, Attendance, Fine
 
 
 def _get_study(url):
@@ -77,7 +77,25 @@ def _get_study_attendance_list(study, user_list):
         attendance_list.sort()
         return attendance_list
     except:
-        None
+        return None
+
+
+def _get_study_fine_list(study):
+    fine = Fine.objects.filter(study=study)
+
+    if fine.count() == 0:
+        return None
+    else:
+        return fine
+
+
+def _get_total_fine_list(study):
+    fines = Fine.objects.filter(study=study)
+    total = 0
+    for fine in fines:
+        total += fine.fine_rate
+    
+    return total
 
 
 def _is_repeat_request(study, user):
@@ -145,6 +163,38 @@ def _manage_attendance(study, user, option, date=None):
     attendance.save()
 
 
+def _impose_fine(study, user, reason, rate):
+    fine = Fine.objects.create(
+        study=study,
+        user=user,
+        fine_reason=reason,
+        fine_rate=rate
+    )
+
+
+def _remove_fine(study, user, _id):
+    fine = Fine.objects.get(
+        study=study,
+        user=user,
+        _id=_id
+    ).delete()
+
+
+def _paid_fine(study, user, _id):
+    fine = Fine.objects.get(
+        study=study,
+        user=user,
+        _id=_id
+    )
+
+    if fine.fine_pay == False:
+        fine.fine_pay = True
+    else:
+        fine.fine_pay = False
+    
+    fine.save()
+
+
 def _approve_study(study, user, is_ok=True):
     if is_ok:
         study_request = StudyRequest.objects.get(study=study, user=user)
@@ -158,7 +208,11 @@ def _approve_study(study, user, is_ok=True):
 
 
 def _list_members(study):
-    return StudyUser.objects.filter(study=study)
+    members = StudyUser.objects.filter(study=study)
+    if members.count() == 0:
+        return None
+    else:
+        return members
 
 
 def _remove_my_study(study, user):

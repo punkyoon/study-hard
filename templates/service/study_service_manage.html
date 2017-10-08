@@ -52,16 +52,16 @@
   {% for member in member_list %}
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title"><a href="/{{ study_info.url }}/user/{{ member.user.username }}">{{ member.user.username }}</a></h4>
+      <h4 class="card-title"><a href="/{{ study_info.url }}/user/{{ member.user.username }}">{{ member.user.username }}</a> | {{ member.user.profile.name }}</h4>
       <p class="card-subtitle mb-2 text-muted">
         {{ member.user.profile.gender }} / {{ member.user.profile.institution }}
       </p>
       <p class="card-text">
         {{ member.user.profile.phone }} / {{ member.user.email }}
       </p>
-      <a class="btn btn-danger" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/attend/">Attend</a>
-      <a class="btn btn-danger" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/late/">Late</a>
-      <a class="btn btn-danger" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/absent/">Absent</a>
+      <a class="btn btn-success" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/attend/">Attend</a>
+      <a class="btn btn-secondary" style="color: #FFFFFF;" href="manage_attendance/{{ member.user.username }}/late/">Late</a>
+      <a class="btn btn-warning"  href="manage_attendance/{{ member.user.username }}/absent/">Absent</a>
       <a class="btn btn-info" style="color: #FFFFFF;" href="manage_deposit/{{ member.user.username }}">
         {% if member.deposit_pay is False %}
           Paid deposit

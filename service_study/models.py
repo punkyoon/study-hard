@@ -23,3 +23,13 @@ class Attendance(models.Model):
 
     def __str__(self):
         return str(self.user.username)
+
+
+class Fine(models.Model):
+    _id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    study = models.ForeignKey(Study, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    fine_pay = models.BooleanField(default=False)
+    fine_rate = models.IntegerField(default=0)
+    fine_reason = models.TextField()

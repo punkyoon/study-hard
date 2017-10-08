@@ -25,7 +25,6 @@ class StudyUser(models.Model):
     _id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
-    fine = models.IntegerField(default=0)
     deposit_pay = models.BooleanField(default=False)
 
     def __str__(self):
