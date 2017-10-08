@@ -81,12 +81,7 @@ def _get_study_attendance_list(study, user_list):
 
 
 def _get_study_fine_list(study):
-    fine = Fine.objects.filter(study=study)
-
-    if fine.count() == 0:
-        return None
-    else:
-        return fine
+    return Fine.objects.filter(study=study)
 
 
 def _get_total_fine_list(study):
