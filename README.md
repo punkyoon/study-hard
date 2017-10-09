@@ -33,7 +33,7 @@ If you want to know more about, please come to our [wiki](https://github.com/pun
 
 
 ## Third Party Libraries
-Please check `NOTICE`(https://github.com/punkyoon/study-hard/blob/master/NOTICE)
+Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 
 * [`django`](https://github.com/django/django) 1.11+
 * [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
