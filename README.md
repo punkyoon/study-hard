@@ -39,9 +39,9 @@ Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 * [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
 * [`jquery`](https://jquery.org)
 * [`bootstrap`](https://github.com/twbs/bootstrap)
-* [`Font-Awesone`](http://fontawesome.io/)
+* [`font-awesome`](http://fontawesome.io/)
 * [`pokinator`](https://github.com/punkyoon/pokinator)
-* [`psycopg2`](http://initd.org/psycopg/license/)
+* [`psycopg2`](http://initd.org/psycopg/)
 
 ## Documentation
 
