@@ -130,3 +130,26 @@ def exit_study(request, url, username):
         info['error'] = 'Please write user username correctly..'
 
     return render(request, 'service/exit_study.html', info)
+
+
+@login_required
+def remove_fine(request, url, hash_value):
+    study = tool._get_study(url)
+    is_admin = tool._is_already_admin(study, request.user)
+
+    if study is None or is_admin is False:
+        return None
+
+    tool._remove_fine(hash_value)
+    print(hash_value)
+
+    user_list = tool._list_members(study)
+    fines = tool._get_study_fine_list(study)
+    info = {
+        'study_info': study,
+        'user_list': user_list,
+        'fines': fines,
+        'is_admin': is_admin,
+    }
+
+    return render(request, 'service/fine_list.html', info)

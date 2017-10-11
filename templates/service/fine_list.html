@@ -58,7 +58,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a class="btn btn-danger" href="#">Remove</a>
+          <a class="btn btn-danger" id="remove-button" href="#">Remove</a>
         </div>
       </div>
     </div>
@@ -75,7 +75,14 @@
           {% else %}
           <a class="btn btn-primary" href="#">UnPaid Fine</a>
           {% endif %}
-        <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#remove-modal" >Remove Fine</button>
+        <button class="btn btn-warning" id="{{ fine.hash_value }}" type="button" data-toggle="modal" data-target="#remove-modal" >Remove Fine</button>
+
+        <script>
+          $('#{{ fine.hash_value }}').click(function() {
+            //console.log(this.id);
+            $('#remove-button').attr('href', '/{{ study_info.url }}/remove_fine/{{ fine.hash_value }}');
+          });
+        </script>
         {% endif %}
       </div>
   </div>

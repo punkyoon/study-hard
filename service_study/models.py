@@ -1,6 +1,16 @@
+import time
+import hashlib
+
 from django.db import models
 from django.contrib.auth.models import User
 from service_main.models import Study
+
+
+def _generate_hash():
+    # Generate 7 character long hash
+    now = str(time.time()).encode('utf-8')
+    hash = hashlib.sha1(now)
+    return hash.hexdigest()[:7]
 
 
 class Notice(models.Model):
@@ -33,3 +43,8 @@ class Fine(models.Model):
     fine_pay = models.BooleanField(default=False)
     fine_rate = models.IntegerField(default=0)
     fine_reason = models.TextField()
+    hash_value = models.CharField(
+        max_length=8,
+        default=_generate_hash,
+        unique=True
+    )

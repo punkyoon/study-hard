@@ -11,17 +11,17 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="study-title">Study title</label>
-      <input id="study-title" name="study-title" type="text" placeholder="Study title" />
+      <input id="study-title" name="study-title" type="text" placeholder="Study title" required/>
     </div>
 
     <div class="form-group">
       <label for="study-deposit">Study deposit</label>
-      <input id="study-deposit" name="study-deposit" type="text" placeholder="Study diposit" />
+      <input id="study-deposit" name="study-deposit" type="number" min="0" default="0" placeholder="Study diposit" required/>
     </div>
 
     <div class="form-group">
       <label for="study-description">Study description</label>
-      <textarea id="study-description" name="study-description" type="text" placeholder="Study description"></textarea>
+      <textarea id="study-description" name="study-description" type="text" placeholder="Study description" required></textarea>
     </div>
     
     <div>

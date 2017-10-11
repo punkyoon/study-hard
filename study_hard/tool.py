@@ -167,12 +167,11 @@ def _impose_fine(study, user, reason, rate):
     )
 
 
-def _remove_fine(study, user, _id):
-    fine = Fine.objects.get(
-        study=study,
-        user=user,
-        _id=_id
-    ).delete()
+def _remove_fine(hash_value):
+    try:
+        Fine.objects.get(hash_value=hash_value).delete()
+    except:
+        return None
 
 
 def _paid_fine(study, user, _id):
