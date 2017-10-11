@@ -1,0 +1,231 @@
+study-hard
+Copyright (c) 2017 punkyoon, simzipark, 3ssarah
+
+The study-hard project contains subcomponents with separatecopyright notices and license terms.
+Your use of the source code for there subcomponents is subject to the terms and conditions of the following licenses.
+
+===================================================================================
+Django (https://github.com/django/django)
+===================================================================================
+
+Copyright (c) Django Software Foundation and individual contributors.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice,
+       this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of Django nor the names of its contributors may be used
+       to endorse or promote products derived from this software without
+       specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+===================================================================================
+django-phonenumber-field (https://github.com/stefanfoulis/django-phonenumber-field)
+===================================================================================
+
+Copyright (c) 2011 Stefan Foulis and contributors.
+ 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+ 
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+
+===================================================================================
+pokinator (https://github.com/punkyoon/pokinator)
+===================================================================================
+
+MIT License
+
+Copyright (c) 2017 punkyoon(Jiyoon Ha)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+=======================================================================
+psycopg2 (http://initd.org/psycopg/)
+=======================================================================
+
+psycopg2 and the LGPL
+=====================
+psycopg2 is free software: you can redistribute it and/or modify it under 
+the terms of the GNU Lesser General Public License as published by the Free 
+Software Foundation, either version 3 of the License, or (at your option) 
+any later version.
+
+psycopg2 is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for more details.
+
+In addition, as a special exception, the copyright holders give permission 
+to link this program with the OpenSSL library (or with modified versions of 
+OpenSSL that use the same license as OpenSSL), and distribute linked combinations 
+including the two.
+
+You must obey the GNU Lesser General Public License in all respects for all 
+of the code used other than OpenSSL. If you modify file(s) with this exception, 
+you may extend this exception to your version of the file(s), but you are not 
+obligated to do so. If you do not wish to do so, delete this exception statement 
+from your version. If you delete this exception statement from all source files 
+in the program, then also delete it here.
+
+You should have received a copy of the GNU Lesser General Public License along 
+with psycopg2 (see the doc/ directory.) 
+If not, see http://www.gnu.org/licenses/.
+
+Alternative licenses
+====================
+If you prefer you can use the Zope Database Adapter ZPsycopgDA 
+(i.e., every file inside the ZPsycopgDA directory) user the ZPL license as published 
+on the Zope web site.
+
+Also, the following BSD-like license applies (at your option) to the files following the 
+pattern psycopg/adapter*.{h,c} and psycopg/microprotocol*.{h,c}:
+
+Permission is granted to anyone to use this software for any purpose, including 
+commercial applications, and to alter it and redistribute it freely, subject to 
+the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not claim that you 
+wrote the original software. If you use this software in a product, an acknowledgment 
+in the product documentation would be appreciated but is not required.
+ 
+2. Altered source versions must be plainly marked as such, and must not be misrepresented 
+as being the original software. 
+
+3. This notice may not be removed or altered from any source distribution.
+
+
+=======================================================================
+bootstrap (https://github.com/twbs/bootstrap)
+=======================================================================
+
+The MIT License (MIT)
+
+Copyright (c) 2011-2017 Twitter, Inc.
+Copyright (c) 2011-2017 The Bootstrap Authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+=======================================================================
+Font-Awesome (font) (http://fontawesome.io/)
+=======================================================================
+License: http://fontawesome.io/license/ (Font: SIL OFL 1.1)
+
+FUll documentation of SIL Open Font License can be found at http://scripts.sil.org/OFL
+
+Font Awesome by Dave Gandy - http://fontawesome.io
+
+=======================================================================
+Font-Awesome (code) (http://fontawesome.io/)
+=======================================================================
+Font Awesome CSS, LESS, and Sass files are licensed under the MIT License:
+http://opensource.org/licenses/mit-license.html
+
+Font Awesome by Dave Gandy - http://fontawesome.io
+
+=======================================================================
+jQuery (https://jquery.org)
+=======================================================================
+Copyright JS Foundation and other contributors, https://js.foundation/
+
+This software consists of voluntary contributions made by many
+individuals. For exact contribution history, see the revision history
+available at https://github.com/jquery/jquery
+
+The following license applies to all parts of this software except as
+documented below:
+
+====
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+====
+
+All files located in the node_modules and external directories are
+externally maintained libraries used by this software which have their
+own licenses; we recommend you read them, as their terms may differ from
+the terms above.

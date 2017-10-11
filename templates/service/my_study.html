@@ -14,7 +14,8 @@
     <h4 class="card-title">{{ manage.title }}</h4>
     <h6 class="card-subtitle mb-2 text-muted">Deposit: {{ manage.deposit }}</h6>
     <p class="card-text">{{ manage.description }}</p>
-    <a href="/{{ manage.url }}" class="card-link">Go to manage page</a>
+    <a href="/{{ manage.url }}" class="card-link">Go to study page</a>
+    <a href="/service_admin/{{ manage.url }}" class="card-link">Go to manage page</a>
   </div>
 </div>
 <br />
@@ -26,7 +27,6 @@
   </div>
 </div>
 {% endfor %}
-
 <br />
 
 <!-- study list user belong to -->
@@ -50,7 +50,6 @@
   </div>
 </div>
 {% endfor %}
-
 <br />
 
 <!-- study list user requested to join -->
@@ -73,4 +72,5 @@
   </div>
 </div>
 {% endfor %}
+<br />
 {% endblock %}

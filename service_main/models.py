@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import Profile
 from pokinator import Pokinator
 
 
@@ -24,7 +25,6 @@ class StudyUser(models.Model):
     _id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
-    fine = models.IntegerField(default=0)
     deposit_pay = models.BooleanField(default=False)
 
     def __str__(self):
@@ -38,4 +38,4 @@ class StudyRequest(models.Model):
     approval = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.user.username)
+        return str(self.user)

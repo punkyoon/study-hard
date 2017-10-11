@@ -1,61 +1,132 @@
+from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
+from service_main.models import StudyUser
 from service_study.models import Notice
-from study_hard.tool import _get_study, _get_notice, _list_members
+from study_hard import tool
 
 
 @login_required
 def study_main(request, url):
-    study = _get_study(url)
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
     
-    notices = Notice.objects.filter(study=study).order_by('-upload_time')[:3]
-    is_admin = True if request.user == study.admin else False;
+    notices = tool._get_notice(study)[:3]
+    fines = tool._get_study_fine_list(study)[:3]
+    is_admin = tool._is_already_admin(study, request.user)
     info = {
         'study_info': study,
         'new_notice': notices,
-        'members': _list_members(study)
+        'new_fine': fines,
+        'members': tool._list_members(study),
     }
     return render(request, 'service/main.html', info)
 
-@login_required
-def kick_out_member(request):
-    pass
-
 
 @login_required
-def manage_fine(request):
-    pass
-
-
-@login_required
-def manage_deposit(request):
-    pass
-
-
-@login_required
-def manage_attandance(request):
-    pass
-
-
-@login_required
-def list_notice(request, url):
-    study = _get_study(url)
+def study_info(request, url):
+    study = tool._get_study(url)
 
     if study is None:
         return redirect('study_list')
 
-    is_admin = True if request.user == study.admin else False
+    user_list = tool._list_members(study)
+    info = {
+        'study_info': study,
+        'members': user_list,
+        'attendance_list': tool._get_study_attendance_list(study, user_list),
+    }
+
+    return render(request, 'service/info.html', info)
+
+
+@login_required
+def list_notice(request, url):
+    study = tool._get_study(url)
+
+    if study is None:
+        return redirect('study_list')
+
+    is_admin = tool._is_already_admin(study, request.user)
     if request.method == 'POST' and is_admin:
         Notice.objects.create(study=study, contents=request.POST['notice'])
 
     info = {
         'study_info': study,
-        'notices': _get_notice(study),
+        'notices': tool._get_notice(study),
         'is_admin': is_admin,
     }
 
     return render(request, 'service/notice.html', info)
+
+
+@login_required
+def list_fine(request, url):
+    study = tool._get_study(url)
+
+    if study is None:
+        return redirect('study_list')
+
+    is_admin = tool._is_already_admin(study, request.user)
+    if request.method == 'POST' and is_admin:
+        user = tool._get_user(request.POST['username'])
+        tool._impose_fine(
+            study,
+            user,
+            request.POST['reason'],
+            request.POST['rate']
+        )
+    
+    user_list = tool._list_members(study)
+    fines = tool._get_study_fine_list(study)
+    info = {
+        'study_info': study,
+        'user_list': user_list,
+        'fines': fines,
+        'is_admin': is_admin,
+    }
+
+    return render(request, 'service/fine_list.html', info)
+
+
+@login_required
+def study_user_info(request, url, username):
+    study = tool._get_study(url)
+    user = tool._get_user(username)
+
+    if study is None or user is None:
+        return redirect('study_list')
+
+    info = {
+        'study_info': study,
+        'attendance_list': tool._get_user_attendance_list(study, user),
+        'study_user': StudyUser.objects.get(study=study, user=user),
+    }
+
+    return render(request, 'service/study_user_info.html', info)
+
+
+@login_required
+def exit_study(request, url, username):
+    study = tool._get_study(url)
+    user = tool._get_user(username)
+    
+    if study is None or user is None:
+        return redirect('my_study')
+
+    info = {
+        'study_info': study,
+        'member': user,
+        'error': None
+    }
+
+    if request.method == 'POST':
+        if request.POST['username'] == user.username:
+            tool._remove_my_study(study, user)
+            return redirect('my_study')
+        info['error'] = 'Please write user username correctly..'
+
+    return render(request, 'service/exit_study.html', info)

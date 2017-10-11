@@ -1,6 +1,51 @@
 # study-hard
 
-underconstruction
+Study-hard is a Web-Based Application for managing study program. 
+> People can be grouped into specific topics, subjects, or goals to set up tasks, and manage schedules.
+
+Any group or individual studies can be managed without App-installation. 
+...
+
+## Overview
+
+## Features
+* Find study in list
+* Make study in specific area, University, gender, etc. 
+* Gather study group
+* Managing groups
+* Automate disribution by using Docker
+* ...
+
+## Installation and Setting
+
+#### Build Requirements
+
+* `Python 3.5+`
+* `Django 1.11+`
+* ...
+
+#### Installation
+
+* `$ pip install -r requirements.txt`
+* ...
+
+If you want to know more about, please come to our [wiki](https://github.com/punkyoon/study-hard/wiki)
+
+
+## Third Party Libraries
+Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
+
+* [`django`](https://github.com/django/django) 1.11+
+* [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
+* [`jquery`](https://jquery.org)
+* [`bootstrap`](https://github.com/twbs/bootstrap)
+* [`font-awesome`](http://fontawesome.io/)
+* [`pokinator`](https://github.com/punkyoon/pokinator)
+* [`psycopg2`](http://initd.org/psycopg/)
+
+## Documentation
+
+...
 
 ## License
 

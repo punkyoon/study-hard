@@ -1,0 +1,39 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<style>
+  .container {
+    margin-bottom: 1%;
+  }
+</style>
+<!-- service title -->
+<h1>Study: {{ study_info.title }}</h1>
+<hr />
+
+<h2>User Info: {{ study_user.user.username }}</h2>
+<hr />
+
+<p><b>Fine:</b> {{ study_user.fine }}</p>
+<p><b>Paid Depoit:</b> {{ study_user.deposit_pay }}</p>
+<br />
+
+<!-- List of attendance -->
+<h3>Attendance List</h3>
+<hr />
+
+{% for attendance in attendance_list %}
+<div class="card">
+  <div class="card-body">
+      <b class="card-title">{{ attendance.date|date:'Y-m-d' }}</b>
+      <p class="card-text">{{ attendance.status }}</p>
+  </div>
+</div>
+<br />
+{% empty %}
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"><i class="fa fa-meh-o" aria-hidden="true"></i> It has No attendance list!</p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

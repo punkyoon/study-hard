@@ -1,0 +1,92 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+<h1>Study: {{ study_info.title }}</h1>
+<hr />
+
+<!-- List of fine -->
+<h3>Fine List</h3>
+<hr />
+
+<!-- Admin can upload notice -->
+{% if is_admin and user_list != None %}
+<div class="container" style="margin-bottom: 8%;">
+  <div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Select Member</label>
+        <select class="form-control" id="username" name="username" required>
+          {% for study_user in user_list %}
+            <option>{{ study_user.user.username }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rate">Fine rate (₩)</label>
+        <input type="number" min="0" class="form-control" id="rate" name="rate" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="reason">Reason of imposing a fine</label>
+        <textarea class="form-control" name="reason" rows="2" cols="50" autofocus required></textarea>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-danger pull-right" type="submit">Impose Fine</button>
+      </div>
+    </form>
+  </div>
+</div>
+<hr />
+{% endif %}
+
+<div class="container">
+  <div class="modal fade" id="remove-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Remove Fine</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure to remove a fine?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a class="btn btn-danger" href="#">Remove</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% for fine in fines %}
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-text">{{ fine.user.username }} | {{ fine.fine_rate }}₩ <i>(is paid: {{ fine.fine_pay }})</i></h5>
+        <p class="card-text">{{ fine.fine_reason }}</p>
+        <h6 class="card-subtitle mb-2 text-muted">{{ fine.date|date:'Y-m-d' }}</h6>
+        {% if is_admin %}
+          {% if fine.fine_pay == False %}
+          <a class="btn btn-primary" href="#">Paid Fine</a>
+          {% else %}
+          <a class="btn btn-primary" href="#">UnPaid Fine</a>
+          {% endif %}
+        <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#remove-modal" >Remove Fine</button>
+        {% endif %}
+      </div>
+  </div>
+  <br />
+  {% empty %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Sorry</h3>
+      <p class="card-text">There's no list..</p>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

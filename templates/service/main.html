@@ -48,19 +48,60 @@
 <h3>Study member</h3>
 <hr />
 
-<div class="container">
+<div class="notice container">
   <ul class="list-group">
   {% for member in members %}
-      <li class="list-group-item">
-      <a href="#">{{ member.user.username }} / {{ member.user.email }}</a>
-      </li>
+    <li class="list-group-item">
+    <a href="user/{{ member.user.username }}">{{ member.user.username }} / {{ member.user.email }}</a>
+    </li>
   {% empty %}
-      <li class="list-group-item">
-      <i class="fa fa-meh-o" aria-hidden="true"></i> It has No members!
-      </li>
+    <li class="list-group-item">
+    <i class="fa fa-meh-o" aria-hidden="true"></i> It has No members!
+    </li>
   {% endfor %}
   </ul>
 </div>
-{% endif %}
 
+
+<!-- List of fine -->
+<h3>Fine (Total: )</h3>
+<hr />
+
+<div class="notice container">
+  {% for fine in new_fine %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-text">{{ fine.user.username }} | {{ fine.fine_rate }}</h5>
+      <p class="card-text">{{ fine.fine_reason }}</p>
+      <h6 class="card-subtitle mb-2 text-muted">{{ fine.date|date:'Y-m-d' }}</h6>
+    </div>
+  </div>
+  <br />
+  {% empty %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Sorry</h3>
+      <p class="card-text">It has No list!</p>
+    </div>
+  </div>
+  {% endfor %}
+  <p class="pull-right"><a href="fine/">More details..</a></p>
+</div>
+{% endif %}
+<br />
+
+{% if request.user != study_info.admin %}
+  <h4>Exit Study</h4>
+  <hr />
+
+  <a class="btn btn-danger" href="exit/{{ request.user.username }}">Exit Study</a>
+  <br />
+{% else %}
+  <h4>Go to manage</h4>
+  <hr />
+
+  <a class="btn btn-primary" href="/service_admin/{{ study_info.url }}">Go to manage</a>
+  <br />
+{% endif %}
+<br /><br />
 {% endblock %}
