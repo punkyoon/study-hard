@@ -23,21 +23,13 @@ def manage_join_request(request, url):
 
 
 @login_required
-def exit_study(request, url):
-    if request.method == 'POST':
-        study = tool._get_study(url)
-        tool._remove_my_study(study, request.user)
-        return redirect('my_study')
-    
-    return render(request, 'service/exit_study.html')
-
-
-@login_required
 def remove_study(request, url):
     if request.method == 'POST':
         study = tool._get_study(url)
-        if tool._is_already_admin(study, user)
+        if tool._is_already_admin(study, request.user)
             study.delete()
-            return redirect('my_study')
+        else:
+            tool._remove_my_study(study, request.user)
+        return redirect('my_study')
 
     return render(request, 'service/remove_study.html')
