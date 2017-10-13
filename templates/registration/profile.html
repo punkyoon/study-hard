@@ -1,27 +1,26 @@
 {% extends 'registration_base.html' %}
 
-{% block header %}
-{% endblock %}
-
 {% block operation %}
 <h1><i class="fa fa-user" aria-hidden="true"></i> Profile</h1>
-<hr />
+<hr style="margin-bottom: 5%;" />
 
-<h2>{{ request.user.username }}, Hello!</h2>
+<div style="margin: auto; width: 50%; border: 3px solid gray; padding: 10px;">
+  <h2 style="margin-bottom: 3%;"><strong>{{ request.user.username }}, Hello!</strong></h2>
 
-<h4>E-mail</h4>
-<p>{{ request.user.email }}</p>
+  <h4>E-mail</h4>
+  <p>{{ request.user.email }}</p>
 
-<h4>Date joined</h4>
-<p>{{ request.user.date_joined|date:'Y-m-d H:i:s' }}</p>
+  <h4>Date joined</h4>
+  <p>{{ request.user.date_joined|date:'Y-m-d H:i:s' }}</p>
 
-<h4>Last Login</h4>
-<p>{{ request.user.last_login|date:'Y-m-d H:i:s' }}</p>
+  <h4>Last Login</h4>
+  <p>{{ request.user.last_login|date:'Y-m-d H:i:s' }}</p>
 
-<a class="btn btn-primary" href="{% url 'study_list' %}">Go to Service main</a>
+  <a class="btn btn-primary" href="{% url 'study_list' %}" style="margin-bottom: 2%;">Go to Service main</a>
 
-<div class="container row">
-  <a class="btn btn-secondary" href="{% url 'password_change' %}" style="margin-right: 1%;">Password Change</a>
-  <a class="btn btn-danger" href="{% url 'delete_account' %}">Delete Account</a>
+  <div class="container row">
+    <a class="btn btn-secondary" href="{% url 'password_change' %}" style="margin-right: 3%;">Password Change</a>
+    <a class="btn btn-danger" href="{% url 'delete_account' %}">Delete Account</a>
+  </div>
 </div>
 {% endblock %}

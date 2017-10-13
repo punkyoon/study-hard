@@ -1,13 +1,10 @@
 {% extends 'registration_base.html' %}
 
-{% block header %}
-{% endblock %}
-
 {% block operation %}
 <h1><i class="fa fa-sign-in" aria-hidden="true"></i> Login</h1>
-<hr />
+<hr style="margin-bottom: 5%;" />
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" style="display: table; margin-left: auto; margin-right: auto;">
   {% csrf_token %}
   <fieldset>
     <div class="input-group">
@@ -15,19 +12,20 @@
       <input class="form-control" id="username" name="username" type="text" placeholder="Username" autofocus required/>
     </div>
 
+    <br/>
+
     <div class="input-group">
       <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
       <input class="form-control" id="password" name="password" type="password" placeholder="Password" required/>
     </div>
 
-    <div class="form-group">
+    <div style="margin-top: 3%;">
+      <a href="{% url 'password_reset' %}">Forgot Password?</a>
+    </div>
+
+    <div class="form-group" style="margin-top: 3%;">
       <button type="submit" class="btn btn-primary">Login</button>
     </div>
   </fieldset>
 </form>
-
-<div>
-  <a href="{% url 'password_reset' %}">Forgot Password?</a>
-</div>
-
 {% endblock %}
