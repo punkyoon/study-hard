@@ -99,7 +99,7 @@ def study_user_info(request, url, username):
 
     if study is None or user is None:
         return redirect('study_list')
-    
+
     fine_info = tool._get_user_fine_list(study, user)
     info = {
         'study_info': study,

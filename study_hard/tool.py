@@ -90,7 +90,7 @@ def _get_user_fine_list(study, user):
     total = 0
     for fine in fines:
         total += fine.fine_rate
-    
+
     return {'total': total, 'fine_list': fines}
 
 
