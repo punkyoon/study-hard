@@ -76,6 +76,7 @@ def manage_deposit(request, url, username):
 def kickout_member(request, url, username):
     study = tool._get_study(url)
     user = tool._get_user(username)
+    print(user)
 
     if study is None or user is None:
         return redirect('my_study')

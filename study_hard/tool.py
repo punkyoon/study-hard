@@ -85,6 +85,15 @@ def _get_study_attendance_list(study, user_list):
         return None
 
 
+def _get_user_fine_list(study, user):
+    fines = Fine.objects.filter(study=study, user=user)
+    total = 0
+    for fine in fines:
+        total += fine.fine_rate
+    
+    return {'total': total, 'fine_list': fines}
+
+
 def _get_study_fine_list(study):
     return Fine.objects.filter(study=study)
 

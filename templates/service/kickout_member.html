@@ -5,10 +5,10 @@
 <h1>Study : {{ study_info.title }}</h1>
 <hr />
 
-<h2>Kickout member : {{ user.username }}</h2>
+<h2>Kickout member : {{ member.username }}</h2>
 <hr />
 
-<p>Are you sure to kickout member {{ user.username }}?</p>
+<p>Are you sure to kickout member {{ member.username }}?</p>
 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>      
