@@ -6,7 +6,7 @@
 <hr />
 
 <!-- study list user manage -->
-<h3>Study list you manage</h3>
+<h3>Study group list: As manager</h3>
 <hr />
 {% for manage in manage_study_list %}
 <div class="card">
@@ -23,14 +23,14 @@
 <div class="card">
   <div class="card-body">
     <h3 class="card-title">Sorry</h3>
-    <p class="card-text">There's no study you manage..</p>
+    <p class="card-text">There's no study list..</p>
   </div>
 </div>
 {% endfor %}
 <br />
 
 <!-- study list user belong to -->
-<h3>Study list you belong to</h3>
+<h3>Study group list: As participant</h3>
 <hr />
 {% for belong in belong_study_list %}
 <div class="card">
@@ -46,14 +46,14 @@
 <div class="card">
   <div class="card-body">
     <h3 class="card-title">Sorry</h3>
-    <p class="card-text">There's no study you belong to..</p>
+    <p class="card-text">There's no study list..</p>
   </div>
 </div>
 {% endfor %}
 <br />
 
 <!-- study list user requested to join -->
-<h3>Study list you requested to join</h3>
+<h3>Study group list: Requested</h3>
 <hr />
 {% for requested in requested_study_list %}
 <div class="card">
@@ -68,7 +68,7 @@
 <div class="card">
   <div class="card-body">
     <h3 class="card-title">Sorry</h3>
-    <p class="card-text">There's no study you requested to join..</p>
+    <p class="card-text">There's no study list..</p>
   </div>
 </div>
 {% endfor %}
