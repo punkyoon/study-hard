@@ -36,7 +36,7 @@ Any group or individual studies can be managed without App-installation.
 ## Third Party Libraries
 Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 
-* [`django`](https://github.com/django/django) 1.11+
+* [`django`](https://github.com/django/django)
 * [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
 * [`jquery`](https://jquery.org)
 * [`bootstrap`](https://github.com/twbs/bootstrap)
