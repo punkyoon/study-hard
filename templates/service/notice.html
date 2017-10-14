@@ -16,7 +16,7 @@
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="form-group">
-          <textarea class="form-control" name="notice" rows="4" cols="50" autofocus required></textarea>
+        <textarea class="form-control" name="notice" rows="4" cols="50" autofocus required></textarea>
       </div>
       <div class="text-center">
         <button class="btn btn-success pull-right" type="submit">Upload Notice</button>
@@ -29,10 +29,10 @@
 <div class="container">
   {% for notice in notices %}
   <div class="card">
-      <div class="card-body">
+    <div class="card-body">
       <p class="card-text">{{ notice.contents }}</p>
       <h6 class="card-subtitle mb-2 text-muted">{{ notice.upload_time|date:'Y-m-d H:i:s' }}</h6>
-      </div>
+    </div>
   </div>
   <br />
   {% empty %}
@@ -40,7 +40,7 @@
     <div class="card-body">
       <h3 class="card-title">Sorry</h3>
       <p class="card-text">There's no notice yet..</p>
-      </div>
+    </div>
   </div>
   {% endfor %}
 </div>

@@ -13,7 +13,7 @@
 <h2>User Info: {{ study_user.user.username }}</h2>
 <hr />
 
-<p><b>Fine:</b> {{ study_user.fine }}</p>
+<p><b>Penalty:</b> {{ user_fine }}₩</p>
 <p><b>Paid Depoit:</b> {{ study_user.deposit_pay }}</p>
 <br />
 
@@ -33,6 +33,27 @@
 <div class="card">
   <div class="card-body">
     <p class="card-text"><i class="fa fa-meh-o" aria-hidden="true"></i> It has No attendance list!</p>
+  </div>
+</div>
+{% endfor %}
+
+<!-- List of fine -->
+<h3>Penalty List</h3>
+<hr />
+
+{% for fine in fine_list %}
+<div class="card">
+  <div class="card-body">
+      <b class="card-title">{{ fine.fine_rate }}₩</b>
+      <p class="card-text">{{ fine.date|date:'Y-m-d' }} | {{ fine.fine_pay}}</p>
+      <p class="card-text">{{ fine.fine_reason }}</p>
+  </div>
+</div>
+<br />
+{% empty %}
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"><i class="fa fa-meh-o" aria-hidden="true"></i> It has No penalty list!</p>
   </div>
 </div>
 {% endfor %}

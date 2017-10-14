@@ -1,5 +1,7 @@
 # study-hard
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://github.com/punkyoon/study-hard/blob/master/LICENSE) [![Build Status](https://travis-ci.org/punkyoon/study-hard.svg?branch=master)](https://travis-ci.org/punkyoon/study-hard)
+
 Study-hard is a Web-Based Application for managing study program. 
 > People can be grouped into specific topics, subjects, or goals to set up tasks, and manage schedules.
 
@@ -7,6 +9,8 @@ Any group or individual studies can be managed without App-installation.
 ...
 
 ## Overview
+
+
 
 ## Features
 * Find study in list
@@ -20,32 +24,41 @@ Any group or individual studies can be managed without App-installation.
 
 #### Build Requirements
 
-* `Python 3.5+`
-* `Django 1.11+`
-* ...
+* Python 3.5+
+* Django 1.11+
+* PostgreSQL
+* CentOS or Using Docker Image
 
 #### Installation
 
 * `$ pip install -r requirements.txt`
-* ...
-
-If you want to know more about, please come to our [wiki](https://github.com/punkyoon/study-hard/wiki)
-
+* `$ docker-compose up -d`
 
 ## Third Party Libraries
 Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 
-* [`django`](https://github.com/django/django) 1.11+
+* [`django`](https://github.com/django/django)
 * [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
 * [`jquery`](https://jquery.org)
 * [`bootstrap`](https://github.com/twbs/bootstrap)
 * [`font-awesome`](http://fontawesome.io/)
 * [`pokinator`](https://github.com/punkyoon/pokinator)
 * [`psycopg2`](http://initd.org/psycopg/)
+* [`raven`](https://github.com/getsentry/raven-python/)
 
 ## Documentation
 
-...
+We have a [wiki page](https://github.com/punkyoon/study-hard/wiki) for project introduction, installation guide, and some documentation.
+
+We welcome any documentation contribution.
+
+## Bug Report & Contribution
+
+We welcome any and all suggestions. Please follow our guideline when contributing to our project.
+
+If you find a bug, please report it to us using the [Issues](https://github.com/punkyoon/study-hard/issues) page on GitHub, with appropriate labels(bug, ..)!
+
+And we're also using error logging system with [Sentry](https://sentry.io/study-hard/). So you don't need a capture page for every error log.
 
 ## License
 

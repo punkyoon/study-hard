@@ -1,4 +1,3 @@
-from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -13,15 +12,16 @@ def study_main(request, url):
 
     if study is None:
         return redirect('study_list')
-    
+
     notices = tool._get_notice(study)[:3]
     fines = tool._get_study_fine_list(study)[:3]
-    is_admin = tool._is_already_admin(study, request.user)
+
     info = {
         'study_info': study,
         'new_notice': notices,
         'new_fine': fines,
         'members': tool._list_members(study),
+        'total_fine': tool._get_total_fine_list(study),
     }
     return render(request, 'service/main.html', info)
 
@@ -79,7 +79,7 @@ def list_fine(request, url):
             request.POST['reason'],
             request.POST['rate']
         )
-    
+
     user_list = tool._list_members(study)
     fines = tool._get_study_fine_list(study)
     info = {
@@ -100,10 +100,13 @@ def study_user_info(request, url, username):
     if study is None or user is None:
         return redirect('study_list')
 
+    fine_info = tool._get_user_fine_list(study, user)
     info = {
         'study_info': study,
         'attendance_list': tool._get_user_attendance_list(study, user),
         'study_user': StudyUser.objects.get(study=study, user=user),
+        'user_fine': fine_info['total'],
+        'fine_list': fine_info['fine_list'],
     }
 
     return render(request, 'service/study_user_info.html', info)
@@ -113,7 +116,7 @@ def study_user_info(request, url, username):
 def exit_study(request, url, username):
     study = tool._get_study(url)
     user = tool._get_user(username)
-    
+
     if study is None or user is None:
         return redirect('my_study')
 
@@ -133,6 +136,18 @@ def exit_study(request, url, username):
 
 
 @login_required
+def paid_fine(request, url, hash_value):
+    study = tool._get_study(url)
+    is_admin = tool._is_already_admin(study, request.user)
+
+    if study is None or is_admin is False:
+        return None
+
+    tool._paid_fine(hash_value)
+    return redirect('/' + study.url + '/fine/')
+
+
+@login_required
 def remove_fine(request, url, hash_value):
     study = tool._get_study(url)
     is_admin = tool._is_already_admin(study, request.user)
@@ -141,15 +156,4 @@ def remove_fine(request, url, hash_value):
         return None
 
     tool._remove_fine(hash_value)
-    print(hash_value)
-
-    user_list = tool._list_members(study)
-    fines = tool._get_study_fine_list(study)
-    info = {
-        'study_info': study,
-        'user_list': user_list,
-        'fines': fines,
-        'is_admin': is_admin,
-    }
-
-    return render(request, 'service/fine_list.html', info)
+    return redirect('/' + study.url + '/fine/')

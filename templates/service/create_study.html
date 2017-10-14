@@ -6,28 +6,30 @@
 <hr />
 
 <!-- creating new study form -->
-<fieldset>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="study-title">Study title</label>
-      <input id="study-title" name="study-title" type="text" placeholder="Study title" required/>
-    </div>
+<div class="container" style="margin-bottom: 8%;">
+  <div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="study-title">Study title</label>
+        <input class="form-control" id="study-title" name="study-title" type="text" placeholder="Study title" required/>
+      </div>
 
-    <div class="form-group">
-      <label for="study-deposit">Study deposit</label>
-      <input id="study-deposit" name="study-deposit" type="number" min="0" default="0" placeholder="Study diposit" required/>
-    </div>
+      <div class="form-group">
+        <label for="study-deposit">Study deposit</label>
+        <input class="form-control" id="study-deposit" name="study-deposit" type="number" min="0" value="0" placeholder="Study diposit" required/>
+      </div>
 
-    <div class="form-group">
-      <label for="study-description">Study description</label>
-      <textarea id="study-description" name="study-description" type="text" placeholder="Study description" required></textarea>
-    </div>
-    
-    <div>
-      <button type="submit" class="btn btn-primary">Create new study</button>
-    </div>
-  </form>
-</fieldset>
+      <div class="form-group">
+        <label for="study-description">Study description</label>
+        <textarea class="form-control" id="study-description" name="study-description" type="text" placeholder="Study description" required></textarea>
+      </div>
+      
+      <div>
+        <button type="submit" class="btn btn-primary">Create new study</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 {% endblock %}

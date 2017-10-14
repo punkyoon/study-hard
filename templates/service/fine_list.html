@@ -6,7 +6,7 @@
 <hr />
 
 <!-- List of fine -->
-<h3>Fine List</h3>
+<h3>Penalty List</h3>
 <hr />
 
 <!-- Admin can upload notice -->
@@ -25,17 +25,17 @@
       </div>
 
       <div class="form-group">
-        <label for="rate">Fine rate (₩)</label>
+        <label for="rate">Penalty rate (₩)</label>
         <input type="number" min="0" class="form-control" id="rate" name="rate" required>
       </div>
       
       <div class="form-group">
-        <label for="reason">Reason of imposing a fine</label>
+        <label for="reason">Reason of imposing a penalty</label>
         <textarea class="form-control" name="reason" rows="2" cols="50" autofocus required></textarea>
       </div>
 
       <div class="text-center">
-        <button class="btn btn-danger pull-right" type="submit">Impose Fine</button>
+        <button class="btn btn-danger pull-right" type="submit">Impose Penalty</button>
       </div>
     </form>
   </div>
@@ -48,13 +48,13 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Remove Fine</h5>
+          <h5 class="modal-title">Remove Penalty</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          Are you sure to remove a fine?
+          Are you sure to remove a penalty?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -65,26 +65,27 @@
   </div>
   {% for fine in fines %}
   <div class="card">
-      <div class="card-body">
-        <h5 class="card-text">{{ fine.user.username }} | {{ fine.fine_rate }}₩ <i>(is paid: {{ fine.fine_pay }})</i></h5>
-        <p class="card-text">{{ fine.fine_reason }}</p>
-        <h6 class="card-subtitle mb-2 text-muted">{{ fine.date|date:'Y-m-d' }}</h6>
-        {% if is_admin %}
+    <div class="card-body">
+      <h5 class="card-text">{{ fine.user.username }} | {{ fine.fine_rate }}₩ <i>(is paid: {{ fine.fine_pay }})</i></h5>
+      <p class="card-text">{{ fine.fine_reason }}</p>
+      <h6 class="card-subtitle mb-2 text-muted">{{ fine.date|date:'Y-m-d' }}</h6>
+      {% if is_admin %}
+        <a class="btn btn-primary" href="/{{ study_info.url }}/paid_fine/{{ fine.hash_value}}/">
           {% if fine.fine_pay == False %}
-          <a class="btn btn-primary" href="#">Paid Fine</a>
+            Paid Penalty
           {% else %}
-          <a class="btn btn-primary" href="#">UnPaid Fine</a>
+            Unpaid Penalty
           {% endif %}
-        <button class="btn btn-warning" id="{{ fine.hash_value }}" type="button" data-toggle="modal" data-target="#remove-modal" >Remove Fine</button>
-
+        </a>
+        <button class="btn btn-warning" id="{{ fine.hash_value }}" type="button" data-toggle="modal" data-target="#remove-modal" >Remove Penalty</button>
         <script>
-          $('#{{ fine.hash_value }}').click(function() {
-            //console.log(this.id);
-            $('#remove-button').attr('href', '/{{ study_info.url }}/remove_fine/{{ fine.hash_value }}');
-          });
-        </script>
-        {% endif %}
-      </div>
+        $('#{{ fine.hash_value }}').click(function() {
+          //console.log(this.id);
+          $('#remove-button').attr('href', '/{{ study_info.url }}/remove_fine/{{ fine.hash_value }}');
+        });
+      </script>
+      {% endif %}
+    </div>
   </div>
   <br />
   {% empty %}
@@ -92,7 +93,7 @@
     <div class="card-body">
       <h3 class="card-title">Sorry</h3>
       <p class="card-text">There's no list..</p>
-      </div>
+    </div>
   </div>
   {% endfor %}
 </div>
