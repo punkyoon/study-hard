@@ -1,5 +1,7 @@
 # study-hard
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://github.com/punkyoon/study-hard/blob/master/LICENSE)
+
 Study-hard is a Web-Based Application for managing study program. 
 > People can be grouped into specific topics, subjects, or goals to set up tasks, and manage schedules.
 
