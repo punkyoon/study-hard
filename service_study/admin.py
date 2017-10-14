@@ -11,7 +11,9 @@ class AttendanceAdmin(admin.ModelAdmin):
 
 
 class FineAdmin(admin.ModelAdmin):
-    list_display = ('user', 'study', 'date', 'fine_rate', 'fine_reason', 'fine_pay')
+    list_display = (
+        'user', 'study', 'date', 'fine_rate', 'fine_reason', 'fine_pay'
+    )
 
 
 admin.site.register(Notice, NoticeAdmin)

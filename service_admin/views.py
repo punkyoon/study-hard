@@ -1,8 +1,7 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from service_main.models import StudyRequest, StudyUser
+from service_main.models import StudyUser
 from study_hard import tool
 
 
@@ -16,9 +15,11 @@ def study_admin_main(request, url):
             'study_info': study,
             'member_list': tool._list_members(study),
             'join_requests': tool._get_study_request_list(study),
-            'attandance_list': tool._get_study_attendance_list(study, user_list),
+            'attandance_list': tool._get_study_attendance_list(
+                study, user_list
+            ),
         }
-    
+
     return render(request, 'service/study_service_manage.html', info)
 
 
@@ -26,13 +27,13 @@ def study_admin_main(request, url):
 def approve_join_request(request, url, username):
     study = tool._get_study(url)
     user = tool._get_user(username)
-    
-    if user == None or study == None:
+
+    if user is None or study is None:
         return redirect('my_study')
-    
+
     if request.user == study.admin:
         study_request = tool._get_study_request(study, user)
-        if study_request != None:
+        if study_request is not None:
             study_request.approval = True
             study_request.save()
             StudyUser.objects.create(study=study, user=user)
@@ -47,7 +48,7 @@ def reject_join_request(request, url, username):
     study = tool._get_study(url)
     user = tool._get_user(username)
 
-    if user == None or study == None:
+    if user is None or study is None:
         return redirect('my_study')
 
     if request.user == study.admin:
@@ -67,7 +68,7 @@ def manage_deposit(request, url, username):
         return redirect('my_study')
 
     tool._manage_deposit(study, user)
-    
+
     return redirect('/service_admin/' + study.url)
 
 
@@ -87,7 +88,7 @@ def kickout_member(request, url, username):
         'study_info': study,
         'member': user,
     }
-    
+
     return render(request, 'service/kickout_member.html', info)
 
 
@@ -120,8 +121,6 @@ def manage_attendance(request, url, username, code):
     if study is None or user is None:
         return redirect('my_study')
 
-    #today = datetime.now()
-
     tool._manage_attendance(study, user, code)
-    
+
     return redirect('/service_admin/' + study.url)

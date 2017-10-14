@@ -10,7 +10,7 @@ def join_request_study(request, url):
     study = tool._get_study(url)
     if study is None or not tool._check_request_avaliable(study, request.user):
         return redirect('study_list')
-    
+
     StudyRequest.objects.create(study=study, user=request.user)
     return redirect('my_study')
 
@@ -33,7 +33,10 @@ def my_study(request):
     study_list = {
         'manage_study_list': tool._get_study_list(request.user, 'manage'),
         'belong_study_list': tool._get_study_list(request.user, 'belong'),
-        'requested_study_list': tool._get_study_list(request.user, 'requested'),
+        'requested_study_list': tool._get_study_list(
+            request.user,
+            'requested'
+        ),
     }
 
     return render(request, 'service/my_study.html', study_list)

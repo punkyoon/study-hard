@@ -16,7 +16,7 @@ def register_view(request):
             user = form.save(commit=False)
             user.email = request.POST['e-mail']
             user.save()
-            
+
             Profile.objects.create(
                 user=user,
                 name=request.POST['name'],
@@ -28,7 +28,7 @@ def register_view(request):
             login(request, user)
             return redirect('/accounts/profile')
         error = 'Wrong ID or Password mismatch'
-    
+
     return render(request, 'registration/register.html', {'error': error})
 
 

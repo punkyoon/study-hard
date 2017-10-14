@@ -9,4 +9,4 @@ install:
   - "pip install flake8"
 
 script:
-- "flake8 --count"
+- "flake8 --count --exclude ./service_study/migrations,./service_main/migrations,./accounts/migrations,./manage.py,./study_hard/settings.py"

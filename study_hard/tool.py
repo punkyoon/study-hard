@@ -46,11 +46,11 @@ def _get_study_list(user, option):
         # Reuqested Study List
         elif option == 'requested':
             return StudyRequest.objects.filter(user=user, approval=False)
-        
+
         # Error
         else:
             raise
-            
+
     except:
         return None
 
@@ -73,7 +73,12 @@ def _get_study_attendance_list(study, user_list):
     attendance_list = list()
     try:
         for study_user in user_list:
-            attendance_list.append(Attendance.objects.filter(study=study, user=study_user.user))
+            attendance_list.append(
+                Attendance.objects.filter(
+                    study=study,
+                    user=study_user.user
+                )
+            )
         attendance_list.sort()
         return attendance_list
     except:
@@ -89,7 +94,7 @@ def _get_total_fine_list(study):
     total = 0
     for fine in fines:
         total += fine.fine_rate
-    
+
     return total
 
 
@@ -118,7 +123,7 @@ def _check_request_avaliable(study, user):
 def _manage_deposit(study, user):
     try:
         study_user = StudyUser.objects.get(study=study, user=user)
-        if study_user.deposit_pay == True:
+        if study_user.deposit_pay:
             study_user.deposit_pay = False
         else:
             study_user.deposit_pay = True
@@ -130,17 +135,16 @@ def _manage_deposit(study, user):
 
 def _manage_attendance(study, user, option, date=None):
     try:
-        #today = datetime.now()
         attendance = Attendance.objects.get(
             study=study,
             user=user,
             date=timezone.now().date()
         )
-            
+
     except:
         attendance = Attendance.objects.create(study=study, user=user)
 
-    if date != None:
+    if date is not None:
         attendance.date = date
 
     if option == 'attend':
@@ -154,12 +158,12 @@ def _manage_attendance(study, user, option, date=None):
 
     else:
         return None
-        
+
     attendance.save()
 
 
 def _impose_fine(study, user, reason, rate):
-    fine = Fine.objects.create(
+    Fine.objects.create(
         study=study,
         user=user,
         fine_reason=reason,
@@ -181,11 +185,11 @@ def _paid_fine(study, user, _id):
         _id=_id
     )
 
-    if fine.fine_pay == False:
+    if fine.fine_pay is False:
         fine.fine_pay = True
     else:
         fine.fine_pay = False
-    
+
     fine.save()
 
 
@@ -193,12 +197,15 @@ def _approve_study(study, user, is_ok=True):
     if is_ok:
         study_request = StudyRequest.objects.get(study=study, user=user)
         StudyUser.objects.create(study=study, user=user)
-        
+
         study_request.approval = True
         study_request.save()
 
     else:
-        study_request = StudyRequest.objects.get(study=study, user=user).delete()
+        study_request = StudyRequest.objects.get(
+            study=study,
+            user=user
+        ).delete()
 
 
 def _list_members(study):

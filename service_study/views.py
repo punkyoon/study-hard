@@ -1,4 +1,3 @@
-from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -13,10 +12,10 @@ def study_main(request, url):
 
     if study is None:
         return redirect('study_list')
-    
+
     notices = tool._get_notice(study)[:3]
     fines = tool._get_study_fine_list(study)[:3]
-    is_admin = tool._is_already_admin(study, request.user)
+
     info = {
         'study_info': study,
         'new_notice': notices,
@@ -79,7 +78,7 @@ def list_fine(request, url):
             request.POST['reason'],
             request.POST['rate']
         )
-    
+
     user_list = tool._list_members(study)
     fines = tool._get_study_fine_list(study)
     info = {
@@ -113,7 +112,7 @@ def study_user_info(request, url, username):
 def exit_study(request, url, username):
     study = tool._get_study(url)
     user = tool._get_user(username)
-    
+
     if study is None or user is None:
         return redirect('my_study')
 
