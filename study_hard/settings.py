@@ -92,8 +92,9 @@ DATABASES = {
         'NAME': 'studyhard',
         'USER': 'studyadmin',
         'PASSWORD': 'temporary@P@SSW0rD',
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-        'PORT': '',
+        #'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
