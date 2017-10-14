@@ -91,9 +91,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-=======================================================================
+===================================================================================
 psycopg2 (http://initd.org/psycopg/)
-=======================================================================
+===================================================================================
 
 psycopg2 and the LGPL
 =====================
@@ -145,9 +145,9 @@ as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 
 
-=======================================================================
+===================================================================================
 bootstrap (https://github.com/twbs/bootstrap)
-=======================================================================
+===================================================================================
 
 The MIT License (MIT)
 
@@ -173,26 +173,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-=======================================================================
+===================================================================================
 Font-Awesome (font) (http://fontawesome.io/)
-=======================================================================
+===================================================================================
 License: http://fontawesome.io/license/ (Font: SIL OFL 1.1)
 
 FUll documentation of SIL Open Font License can be found at http://scripts.sil.org/OFL
 
 Font Awesome by Dave Gandy - http://fontawesome.io
 
-=======================================================================
+===================================================================================
 Font-Awesome (code) (http://fontawesome.io/)
-=======================================================================
+===================================================================================
 Font Awesome CSS, LESS, and Sass files are licensed under the MIT License:
 http://opensource.org/licenses/mit-license.html
 
 Font Awesome by Dave Gandy - http://fontawesome.io
 
-=======================================================================
+===================================================================================
 jQuery (https://jquery.org)
-=======================================================================
+===================================================================================
 Copyright JS Foundation and other contributors, https://js.foundation/
 
 This software consists of voluntary contributions made by many
@@ -230,9 +230,9 @@ externally maintained libraries used by this software which have their
 own licenses; we recommend you read them, as their terms may differ from
 the terms above.
 
-=======================================================================
+===================================================================================
 raven (https://github.com/getsentry/raven-python/)
-=======================================================================
+===================================================================================
 
 Copyright (c) 2015 Functional Software, Inc and individual contributors.
 All rights reserved.
