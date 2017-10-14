@@ -26,6 +26,7 @@ Any group or individual studies can be managed without App-installation.
 
 * Python 3.5+
 * Django 1.11+
+* PostgreSQL
 * CentOS or Using Docker Image
 
 #### Installation
