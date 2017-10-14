@@ -9,7 +9,11 @@ Any group or individual studies can be managed without App-installation.
 ...
 
 ## Overview
+* User version
+![alt text](https://github.com/punkyoon/study-hard/blob/master/images/study-hard-user-ver.gif)
 
+* Manger version
+![alt text](https://github.com/punkyoon/study-hard/blob/master/images/study-hard-manager-ver.gif)
 
 
 ## Features
