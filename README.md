@@ -10,6 +10,8 @@ Any group or individual studies can be managed without App-installation.
 
 ## Overview
 
+
+
 ## Features
 * Find study in list
 * Make study in specific area, University, gender, etc. 
@@ -22,17 +24,14 @@ Any group or individual studies can be managed without App-installation.
 
 #### Build Requirements
 
-* `Python 3.5+`
-* `Django 1.11+`
-* ...
+* Python 3.5+
+* Django 1.11+
+* CentOS or Using Docker Image
 
 #### Installation
 
 * `$ pip install -r requirements.txt`
-* ...
-
-If you want to know more about, please come to our [wiki](https://github.com/punkyoon/study-hard/wiki)
-
+* `$ docker-compose up -d`
 
 ## Third Party Libraries
 Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
@@ -44,10 +43,21 @@ Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 * [`font-awesome`](http://fontawesome.io/)
 * [`pokinator`](https://github.com/punkyoon/pokinator)
 * [`psycopg2`](http://initd.org/psycopg/)
+* [`raven`](https://github.com/getsentry/raven-python/)
 
 ## Documentation
 
-...
+We have a [wiki page](https://github.com/punkyoon/study-hard/wiki) for project introduction, installation guide, and some documentation.
+
+We welcome any documentation contribution.
+
+## Bug Report & Contribution
+
+We welcome any and all suggestions. Please follow our guideline when contributing to our project.
+
+If you find a bug, please report it to us using the [Issues](https://github.com/punkyoon/study-hard/issues) page on GitHub, with appropriate labels(bug, ..)!
+
+And we're also using error logging system with [Sentry](https://sentry.io/study-hard/). So you don't need a capture page for every error log.
 
 ## License
 

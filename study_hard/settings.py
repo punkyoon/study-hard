@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'raven.contrib.django.raven_compat',
     'phonenumber_field',
     'accounts',
     'study_hard',
@@ -117,6 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+RAVEN_CONFIG = {
+    'dsn': 'https://279926e319424568a889198320870645:51f4bcb9770546d288afdd5f0400c0b2@sentry.io/230228',
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

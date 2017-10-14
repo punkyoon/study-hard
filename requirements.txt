@@ -2,3 +2,4 @@ Django>1.11
 django-phonenumber-field
 pokinator
 psycopg2
+raven
