@@ -132,6 +132,18 @@ def exit_study(request, url, username):
 
 
 @login_required
+def paid_fine(request, url, hash_value):
+    study = tool._get_study(url)
+    is_admin = tool._is_already_admin(study, request.user)
+
+    if study is None or is_admin is False:
+        return None
+
+    tool._paid_fine(hash_value)
+    return redirect(study.url + '/fine/')
+
+
+@login_required
 def remove_fine(request, url, hash_value):
     study = tool._get_study(url)
     is_admin = tool._is_already_admin(study, request.user)
@@ -140,8 +152,7 @@ def remove_fine(request, url, hash_value):
         return None
 
     tool._remove_fine(hash_value)
-    print(hash_value)
-
+    '''
     user_list = tool._list_members(study)
     fines = tool._get_study_fine_list(study)
     info = {
@@ -150,5 +161,6 @@ def remove_fine(request, url, hash_value):
         'fines': fines,
         'is_admin': is_admin,
     }
+    '''
 
-    return render(request, 'service/fine_list.html', info)
+    return redirect(study.url + '/fine/')

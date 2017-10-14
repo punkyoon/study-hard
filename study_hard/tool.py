@@ -178,12 +178,11 @@ def _remove_fine(hash_value):
         return None
 
 
-def _paid_fine(study, user, _id):
-    fine = Fine.objects.get(
-        study=study,
-        user=user,
-        _id=_id
-    )
+def _paid_fine(hash_value):
+    try:
+        fine = Fine.objects.get(hash_value=hash_value)
+    except:
+        return False
 
     if fine.fine_pay is False:
         fine.fine_pay = True
@@ -191,6 +190,7 @@ def _paid_fine(study, user, _id):
         fine.fine_pay = False
 
     fine.save()
+    return True
 
 
 def _approve_study(study, user, is_ok=True):
