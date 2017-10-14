@@ -1,0 +1,33 @@
+version: '2'
+services:
+  postgres:
+      image: postgres
+      environment:
+        - POSTGRES_USER=studyadmin
+        - POSTGRES_PASSWORD=temporary@P@SSW0rD
+        - POSTGRES_DB=studyhard
+      volumes:
+        - ./postgres:/docker-entrypoint-initdb.d:ro
+        - ./postgres_db:/var/lib/postgresql/data:rw
+      networks:
+        - backend
+      ports:
+        - "5432:5432"
+  study-hard:
+    build: .
+    working_dir: /opt/study-hard
+    command: bash -c "python manage.py runserver 0.0.0.0:80"
+    ports:
+      - "80:80"
+    environment:
+      - POSTGRES_HOST=postgres
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - postgres
+    links:
+      - postgres
+networks:
+  frontend: # exposed
+  backend: # not exposed
