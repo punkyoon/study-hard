@@ -33,6 +33,7 @@ Any group or individual studies can be managed without App-installation.
 
 * `$ pip install -r requirements.txt`
 * `$ docker-compose up -d`
+* `$ make`
 
 ## Third Party Libraries
 Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
@@ -41,10 +42,11 @@ Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 * [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
 * [`jquery`](https://jquery.org)
 * [`bootstrap`](https://github.com/twbs/bootstrap)
-* [`font-awesome`](http://fontawesome.io/)
+* [`font-awesome`](http://fontawesome.io)
 * [`pokinator`](https://github.com/punkyoon/pokinator)
-* [`psycopg2`](http://initd.org/psycopg/)
-* [`raven`](https://github.com/getsentry/raven-python/)
+* [`psycopg2`](http://initd.org/psycopg)
+* [`raven`](https://github.com/getsentry/raven-python)
+* [`uwsgi`](https://github.com/unbit/uwsgi)
 
 ## Documentation
 

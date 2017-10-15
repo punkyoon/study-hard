@@ -1,5 +1,20 @@
 version: '2'
 services:
+  nginx:
+    build: ./nginx
+    networks:
+      - backend
+      - frontend
+    ports:
+      - "80:80"
+    links:
+      - web
+    depends_on:
+      - web
+    environment:
+      WEB_HOST: web
+    volumes_from:
+      - web
   postgres:
       image: postgres
       environment:
@@ -13,21 +28,26 @@ services:
         - backend
       ports:
         - "5432:5432"
-  study-hard:
+  web:
     build: .
     working_dir: /opt/study-hard
-    command: bash -c "python manage.py runserver 0.0.0.0:80"
-    ports:
-      - "80:80"
+    command: bash -c "uwsgi --ini uwsgi.ini --http :8000"
     environment:
       - POSTGRES_HOST=postgres
+    ports:
+      - "8000:8000"
     networks:
       - frontend
       - backend
     depends_on:
       - postgres
+    environment:
+      - POSTGRES_HOST=postgres
+      - IS_HTTPS_IN_FRONT_OF_NGINX=False
     links:
       - postgres
+    volumes:
+      - /opt/study-hard/collected_static
 networks:
   frontend: # exposed
   backend: # not exposed

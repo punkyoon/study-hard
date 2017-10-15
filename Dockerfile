@@ -7,5 +7,6 @@ WORKDIR /opt/study-hard
 ADD requirements.txt /opt/study-hard
 RUN pip install -r requirements.txt
 COPY . /opt/study-hard
+RUN python manage.py collectstatic --noinput
 
-EXPOSE 80
+EXPOSE 8000
