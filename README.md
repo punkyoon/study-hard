@@ -31,9 +31,10 @@ Any group or individual studies can be managed without App-installation.
 
 #### Installation
 
-* `$ pip install -r requirements.txt`
-* `$ docker-compose up -d`
-* `$ make`
+```sh
+$ docker-compose up -d
+$ make
+```
 
 ## Third Party Libraries
 Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
