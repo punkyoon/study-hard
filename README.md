@@ -36,6 +36,8 @@ $ docker-compose up -d
 $ make
 ```
 
+For further instructions on installation, please [visit our wiki page](https://github.com/punkyoon/study-hard/wiki/Installation-and-Settings).
+
 ## Third Party Libraries
 Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 
