@@ -158,7 +158,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+
+# Email settings - NEED TO CHANGE
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.test.com'    # NEED TO CHANGE!
+
+EMAIL_HOST_USER = 'test@test.com'
+# USING ENVIRONMENT VARIABLE!
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+SERVER_EMAIL = 'test@test.com'
+DEFAULT_FROM_MAIL = 'TEST_DEVELOPER'
