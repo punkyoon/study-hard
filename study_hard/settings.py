@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import json
 import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,10 +22,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'a6t5d!82z0q9gr62@n^(i)01q@0ampy$(5(=koy_3v*ib-(82r'
+try:
+    secret_file = os.path.join(BASE_DIR, 'secret.key')
+    with open(secret_file, 'r') as f:
+        secret = json.loads(f.read())
+except FileNotFoundError:
+    secret = {'SECRET_KEY': True}
+
+
+def _get_secret(setting, secret=secret):
+    try:
+        return secret[setting]
+    except:
+        error_msg = 'Set the {0} environment variable'.format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+
+SECRET_KEY = _get_secret('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -142,4 +160,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]

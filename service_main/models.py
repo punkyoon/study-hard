@@ -9,7 +9,7 @@ def _generate_url():
 
 class Study(models.Model):
     _id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=80)
     deposit = models.IntegerField(default=0)
     url = models.SlugField(unique=True, default=_generate_url)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
