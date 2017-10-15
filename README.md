@@ -69,7 +69,7 @@ And we're also using error logging system with [Sentry](https://sentry.io/study-
 
 [GNU General Public License v3.0 (GPL-3)](https://github.com/ddok-ddok/study-hard/blob/master/LICENSE)
 
-Group study management service Copyright (C) 2017 3ssarah, punkyoon, simzipark
+study-hard Copyright (C) 2017 3ssarah, punkyoon, simzipark
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
