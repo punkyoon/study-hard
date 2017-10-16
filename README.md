@@ -2,23 +2,34 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://github.com/punkyoon/study-hard/blob/master/LICENSE) [![Build Status](https://travis-ci.org/punkyoon/study-hard.svg?branch=master)](https://travis-ci.org/punkyoon/study-hard)
 
-Study-hard is a Web-Based Application for managing study program. 
-> People can be grouped into specific topics, subjects, or goals to set up tasks, and manage schedules.
+Study-hard is a Web-Based Application for managing study group.
 
-Any group or individual studies can be managed without App-installation. 
-...
+Before `study-hard`, study group manager had to be in charge of whole operation and financial management such as panalty, gurantee etc. Which was unclearly supervised by manager.
+
+The `study-hard` can solve above problems. `study-hard` support recruitment, management and participation of study gorups to deal with problems.
 
 ## Overview
 
 ![manager-overview](https://github.com/punkyoon/study-hard/blob/master/images/study-hard-manager-ver.gif)
 
 ## Features
-* Find study in list
-* Make study in specific area, University, gender, etc. 
-* Gather study group
-* Managing groups
-* Automate disribution by using Docker
-* ...
+
+**1. As a manager**
+
+* Rejecting or approving participation in study group
+* Possible to access applicant’s information (institution, email, gender, etc.)
+* Managing study group members attendance (Late / absent / attendance)
+* Managing study group members penalty (Reasons for penalty / Fill in fine amount)
+* Managing deposit payment
+* Posting Announcements
+
+**2. As a general user**
+
+* Searching study group
+* Asking for permission to join specific study group
+* Checking announcement (a study group that joined)
+* Each member can check other members attendance, payment of penalties and deposit money
+* Can check the total amount of fine in study group
 
 ## Installation and Setting
 
