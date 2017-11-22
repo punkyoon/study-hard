@@ -1,5 +1,5 @@
 from channels import route
-from service_main import consumers
+from service_study import consumers
 
 
 custom_routing = [
