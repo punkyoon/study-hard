@@ -10,5 +10,5 @@ websocket_routing = [
 
 channel_routing = [
     include('study_hard.routing.websocket_routing', path='^/chat_room/'),
-    include('service_main.routing.custom_routing),
+    include('service_main.routing.custom_routing'),
 ]
