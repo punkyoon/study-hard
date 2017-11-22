@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^notice/$', views.list_notice, name='notice'),
     url(r'^fine/$', views.list_fine, name='fine'),
     url(r'^user/([a-zA-Z0-9]+)/$', views.study_user_info, name='user_info'),
+    url(r'^chat/$', views.chat_study, name='chat_study'),
     url(r'^exit/([a-zA-Z0-9]+)/$', views.exit_study, name='exit_study'),
     url(r'^info/$', views.study_info, name='study_info'),
     url(r'^paid_fine/([a-zA-Z0-9]+)/$', views.paid_fine, name='paid_fine'),

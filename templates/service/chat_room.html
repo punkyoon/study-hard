@@ -1,0 +1,34 @@
+{% extends 'service_base.html' %}
+
+{% block contents %}
+<!-- service title -->
+<h1>Study: {{ study_info.title }}</h1>
+<hr/>
+
+<h3>Chat room</h3>
+<hr/>
+
+<div class="chat-room">
+  <div class="chat-window">
+  </div>
+
+  <div class="chat-sender">
+    <form action="">
+      <input id="input-msg" />
+      <button id="send-msg">Send</button>
+    </form>
+  </div>
+</div>
+
+<style type="text/css">
+  .chat-window {
+    width: 500px;
+    height: 400px;
+    overflow: auto;
+  }
+</style>
+
+<script>
+</script>
+
+{% endblock %}
