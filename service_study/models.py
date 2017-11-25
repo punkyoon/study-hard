@@ -1,8 +1,12 @@
 import time
+import json
 import hashlib
 
 from django.db import models
 from django.contrib.auth.models import User
+
+from channels import Group
+
 from service_main.models import Study
 
 
@@ -48,3 +52,31 @@ class Fine(models.Model):
         default=_generate_hash,
         unique=True
     )
+
+    def __str__(self):
+        return str(self._id)
+
+
+class Chat(models.Model):
+    _id = models.AutoField(primary_key=True)
+    study = models.ForeignKey(Study, on_delete=models.CASCADE)
+    message_datetime = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
+
+    def __str__(self):
+        return str(self._id)
+
+    @property
+    def websocket_group(self):
+        return Group(str(self.study.url))
+
+    def send_message(self):
+        msg = {
+            'chat': self.study.url,
+            'message': self.message,
+            'msg_datetime': str(self.message_datetime),
+        }
+
+        self.websocket_group.send({
+            'text': json.dumps(msg)
+        })

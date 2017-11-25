@@ -167,6 +167,4 @@ def chat_study(request, url):
         'user': request.user.username,
     }
 
-    print(info['user'])
-
     return render(request, 'service/chat_room.html', info)

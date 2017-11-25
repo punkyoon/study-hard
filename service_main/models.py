@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from channels import Group
 from pokinator import Pokinator
 
 
@@ -18,6 +19,10 @@ class Study(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+    @property
+    def websocket_group(self):
+        return Group(self.url)
 
 
 class StudyUser(models.Model):
