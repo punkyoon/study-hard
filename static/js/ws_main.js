@@ -11,12 +11,14 @@ socket.listen(function (message) {
     if (message.chat) {
         var appended_msg = $(
             '<div class="card" style="margin-bottom: 10px;">\
-              <div class="card-header">\
-                <p>' + message.message + '</p>\
+              <div class="card-body" style="height: 30%;">\
+                <p class="card-text">' + message.message + '</p>\
+                <p class="card-text"><small class="text-muted">' + message.msg_datetime + '</small></p>\
               </div>\
             </div>'
         );
         $('#chat-list').append(appended_msg);
+        $('#chat-list').animate({scrollTop: $('#chat-list').prop("scrollHeight")}, 1000);
     }
     else if (message.join) {
         console.log('join event');
