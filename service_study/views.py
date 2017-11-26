@@ -157,3 +157,14 @@ def remove_fine(request, url, hash_value):
 
     tool._remove_fine(hash_value)
     return redirect('/' + study.url + '/fine/')
+
+
+@login_required
+def chat_study(request, url):
+    study = tool._get_study(url)
+    info = {
+        'study_info': study,
+        'user': request.user.username,
+    }
+
+    return render(request, 'service/chat_room.html', info)

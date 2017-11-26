@@ -30,6 +30,7 @@ The `study-hard` can solve above problems. `study-hard` support recruitment, man
 * Checking announcement (a study group that joined)
 * Each member can check other members attendance, payment of penalties and deposit money
 * Can check the total amount of fine in study group
+* Can chat with study member
 
 ## Installation and Setting
 
@@ -38,7 +39,9 @@ The `study-hard` can solve above problems. `study-hard` support recruitment, man
 * Python 3.5+
 * Django 1.11+
 * PostgreSQL
-* CentOS or Using Docker Image
+* Ubuntu or Using Docker Image
+
+> We recommand you to use docker image
 
 #### Installation
 
@@ -54,13 +57,17 @@ Please check [NOTICE](https://github.com/punkyoon/study-hard/blob/master/NOTICE)
 
 * [`django`](https://github.com/django/django)
 * [`django-phonenumber-field`](https://github.com/stefanfoulis/django-phonenumber-field)
-* [`jquery`](https://jquery.org)
-* [`bootstrap`](https://github.com/twbs/bootstrap)
-* [`font-awesome`](http://fontawesome.io)
 * [`pokinator`](https://github.com/punkyoon/pokinator)
 * [`psycopg2`](http://initd.org/psycopg)
 * [`raven`](https://github.com/getsentry/raven-python)
-* [`uwsgi`](https://github.com/unbit/uwsgi)
+* [`asgi_redis`](https://github.com/django/asgi_redis)
+* [`django-redis`](https://github.com/niwinz/django-redis)
+* [`channels`](https://github.com/django/channels)
+* [`twisted`](https://github.com/twisted/twisted)
+* [`jquery`](https://jquery.org)
+* [`bootstrap`](https://github.com/twbs/bootstrap)
+* [`font-awesome`](http://fontawesome.io)
+
 
 ## Documentation
 
@@ -87,12 +94,3 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
-
-
-## People@Team `ddok-ddok`
-
-3ssarah(Sarah Lee): ssarha0731@gmail.com
-
-punkyoon(Jiyoon Ha): punkkid001@gmail.com
-
-simzipark(Jihyun Park): bzh0406@naver.com

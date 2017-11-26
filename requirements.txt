@@ -3,4 +3,7 @@ django-phonenumber-field
 pokinator
 psycopg2
 raven
-uwsgi
+asgi_redis
+django_redis
+channels
+Twisted
