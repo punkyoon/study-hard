@@ -8,13 +8,14 @@ services:
     ports:
       - "80:80"
     links:
-      - web
+      - daphne
     depends_on:
-      - web
+      - daphne
+      - worker
     environment:
-      WEB_HOST: web
+      DAPHNE_HOST: daphne
     volumes_from:
-      - web
+      - daphne
   postgres:
       image: postgres
       environment:
@@ -28,26 +29,49 @@ services:
         - backend
       ports:
         - "5432:5432"
-  web:
-    build: .
-    working_dir: /opt/study-hard
-    command: bash -c "uwsgi --ini uwsgi.ini --http :8000"
-    environment:
-      - POSTGRES_HOST=postgres
-    ports:
-      - "8000:8000"
-    networks:
-      - frontend
-      - backend
-    depends_on:
-      - postgres
-    environment:
-      - POSTGRES_HOST=postgres
-      - IS_HTTPS_IN_FRONT_OF_NGINX=False
-    links:
-      - postgres
-    volumes:
-      - /opt/study-hard/collected_static
+  redis:
+      image: redis
+      networks:
+        - backend
+      ports:
+        - "6379:6379"
+  worker:
+      build: .
+      working_dir: /opt/study-hard
+      command: bash -c "python manage.py runworker"
+      environment:
+        - REDIS_HOST=redis
+        - POSTGRES_HOST=postgres
+      networks:
+        - frontend
+        - backend
+      depends_on:
+        - redis
+        - postgres
+      links:
+        - redis
+        - postgres
+  daphne:
+      build: .
+      working_dir: /opt/study-hard
+      command: bash -c "daphne -b 0.0.0.0 -p 8000 study_hard.asgi:channel_layer"
+      ports:
+        - "8000:8000"
+      environment:
+        - REDIS_HOST=redis
+        - POSTGRES_HOST=postgres
+        - IS_HTTPS_IN_FRONT_OF_NGINX=False
+      networks:
+        - frontend
+        - backend
+      depends_on:
+        - redis
+        - postgres
+      links:
+        - redis
+        - postgres
+      volumes:
+        - /opt/study-hard/collected_static
 networks:
   frontend: # exposed
   backend: # not exposed

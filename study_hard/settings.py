@@ -44,7 +44,7 @@ SECRET_KEY = _get_secret('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -101,6 +101,7 @@ WSGI_APPLICATION = 'study_hard.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -120,7 +121,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-'''
 
 
 # Password validation
