@@ -8,28 +8,28 @@ from service_study.models import Notice, Attendance, Fine
 def _get_study(url):
     try:
         return Study.objects.get(url=url)
-    except:
+    except Exception:
         return None
 
 
 def _get_notice(study):
     try:
         return Notice.objects.filter(study=study).order_by('-upload_time')
-    except:
+    except Exception:
         return None
 
 
 def _get_user(username):
     try:
         return User.objects.get(username=username)
-    except:
+    except Exception:
         return None
 
 
 def _get_user_attendance_list(study, user):
     try:
         return Attendance.objects.filter(study=study, user=user)
-    except:
+    except Exception:
         return None
 
 
@@ -51,21 +51,21 @@ def _get_study_list(user, option):
         else:
             raise
 
-    except:
+    except Exception:
         return None
 
 
 def _get_study_request(study, user):
     try:
         return StudyRequest.objects.get(study=study, user=user)
-    except:
+    except Exception:
         return None
 
 
 def _get_study_request_list(study):
     try:
         return StudyRequest.objects.filter(study=study, approval=False)
-    except:
+    except Exception:
         return None
 
 
@@ -81,7 +81,7 @@ def _get_study_attendance_list(study, user_list):
             )
         attendance_list.sort()
         return attendance_list
-    except:
+    except Exception:
         return None
 
 
@@ -111,7 +111,7 @@ def _is_repeat_request(study, user):
     try:
         StudyRequest.objects.get(study=study, user=user)
         return True    # repeat
-    except:
+    except Exception:
         return False    # repeat not
 
 
@@ -138,7 +138,7 @@ def _manage_deposit(study, user):
             study_user.deposit_pay = True
         study_user.save()
         return True    # Success
-    except:
+    except Exception:
         return False    # Fail
 
 
@@ -150,7 +150,7 @@ def _manage_attendance(study, user, option, date=None):
             date=timezone.now().date()
         )
 
-    except:
+    except Exception:
         attendance = Attendance.objects.create(study=study, user=user)
 
     if date is not None:
@@ -183,14 +183,14 @@ def _impose_fine(study, user, reason, rate):
 def _remove_fine(hash_value):
     try:
         Fine.objects.get(hash_value=hash_value).delete()
-    except:
+    except Exception:
         return None
 
 
 def _paid_fine(hash_value):
     try:
         fine = Fine.objects.get(hash_value=hash_value)
-    except:
+    except Exception:
         return False
 
     if fine.fine_pay is False:
@@ -230,5 +230,5 @@ def _remove_my_study(study, user):
         StudyUser.objects.get(study=study, user=user).delete()
         StudyRequest.objects.get(study=study, user=user).delete()
         return True    # Success
-    except:
+    except Exception:
         return False    # Fail
